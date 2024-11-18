@@ -43,7 +43,11 @@
     <td>{{$user->phone_number}}</td>
     <td>{{$user->created_at}}</td>
     <!--<td><a href='#' data-bs-toggle='modal' data-id=''  data-bs-target='#pop' class='showdata' value='' name='data'><i class='fa fa-edit'></i></a></td>-->
-    <td><a href="{{ url('/applicant_share/' . $user->id) }}"  ><i class='fa fa-eye'></i></a></td>
+    <td>
+      <a href="{{ url('/all_applicant_share/' . $user->id) }}"  ><i class='fa fa-eye'></i></a> | 
+      <a href="{{ url('/all_applicant_share_report/' . $user->id) }}"  ><i class='fa fa-chart-line'></i></a>
+  </td>
+    
     
     
    

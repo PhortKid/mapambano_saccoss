@@ -52,4 +52,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Shares::class);
     }
+
+    public function savings(): HasMany
+    {
+        return $this->hasMany(Savings::class);
+    }
+
+
+    public function deposite(): HasMany
+    {
+        return $this->hasMany(Deposite::class);
+    }
+
+    public function loans(): HasMany
+    {
+        return $this->hasMany(Loans::class);
+    }
 }

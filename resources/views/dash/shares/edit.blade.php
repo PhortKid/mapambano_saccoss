@@ -4,7 +4,7 @@
   <div class="modal-dialog  modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit  User</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit  Shares</h5>
       
       </div>
       <div class="modal-body">
