@@ -108,6 +108,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">manage:</h6>
             <a class="collapse-item" href="{{ route('loans_management.index')}}">View/Manage Loan</a>
+            <a class="collapse-item" href="{{ route('repaid_management.index')}}">Lipa Mkopo</a>
             <a class="collapse-item" href="{{route('all.applicant.loan')}}">View applicant loan</a>
         </div>
     </div>

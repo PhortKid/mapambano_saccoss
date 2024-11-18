@@ -7,23 +7,22 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Loans extends Model
 {
-      // Hakikisha unajaza safu ambazo zinaruhusiwa kuingizwa
-      protected $fillable = [
-        'properties_number', 
-        'issued', 
-        'repaid', 
+      
+    protected $fillable = [
+        'balance',
+       'amount',
         'user_id'
     ];
 
    
-    public function user(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
-
- 
-    public function getBalanceAttribute(): float
+    
+    public function transactions()
     {
-        return $this->issued - $this->repaid;
+        return $this->hasMany(Transaction::class);
     }
+    
 }

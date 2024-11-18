@@ -32,24 +32,21 @@ class LoansController extends Controller
     public function store(Request $request)
     {
         $data =$request->validate(
-            [
-            'properties_no'=>['required'],
-            'user_id'=>['nullable'],
-            'issued'=>['required'],
-            'repaid'=>['required'],
+            ['applicant'=>['required'],
+            'amount'=>['required'],
             ]
         );
 
  
 
-        $loan=new Loans;
-        $loan->properties_number=$request->input('properties_no');
-        $loan->user_id=$request->input('applicant');
-        $loan->issued=$request->input('issued');
-        $loan->repaid=$request->input('repaid');
-        $loan->save();
-
-        return redirect('/loans_management')->with('success','Loan Created');
+        $loan = Loans::create([
+            'user_id' => $request->applicant,
+            'amount' => $request->amount,
+            'balance' => $request->amount,
+        ]);
+    
+       // return response()->json(['message' => 'Mkopo umeundwa kwa mafanikio!', 'loan' => $loan]);
+        return redirect('/loans_management')->with('success','Mkopo umeundwa kwa mafanikio!');
     }
 
     /**

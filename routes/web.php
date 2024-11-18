@@ -9,6 +9,11 @@ use App\Http\Controllers\SharesController;
 use App\Http\Controllers\SavingsController;
 use App\Http\Controllers\DepositeController;
 use App\Http\Controllers\LoansController;
+use App\Http\Controllers\RepaidController;
+
+use App\Models\Loans;
+
+use Illuminate\Http\Request;
 
 use EmilKitua\Nida\Nida;
 
@@ -157,3 +162,70 @@ Route::get('/all_applicant_loan_report/{user_id}', function($user_id) {
 });
 
 require __DIR__.'/auth.php';
+
+
+
+Route::get('get_loan',function(){
+    return view('hifadhi_mkopo');
+});
+
+Route::resource('/repaid_management',RepaidController::class);
+
+
+Route::post('store_loan',function(Request $request)
+{
+
+
+    $loan = Loans::create([
+        'user_id' => $request->user_id,
+        'amount' => $request->amount,
+        'balance' => $request->amount,
+    ]);
+
+    return response()->json(['message' => 'Mkopo umeundwa kwa mafanikio!', 'loan' => $loan]);
+
+    
+})->name('store_loan');
+
+
+Route::post('lipa_mkopo',
+function (Request $request)
+{
+    $loan = Loans::findOrFail($request->loan_id);
+
+    $minimumPayment = $loan->balance * 0.10; // Asilimia 10 ya salio
+
+    $request->validate([
+        'amount' => [
+            'required',
+            'numeric',
+            'min:' . $minimumPayment, // Angalau 10% ya salio
+            'max:' . $loan->balance,  // Isiwe zaidi ya salio
+        ],
+    ]);
+
+    $paymentAmount = $request->amount;
+    $fee = $paymentAmount * 0.10; // Ada ya 10% ya malipo
+
+    // Hifadhi muamala
+    $loan->transactions()->create([
+        'amount' => $paymentAmount,
+        'fee' => $fee,
+    ]);
+
+    // Sasisha salio
+    $loan->balance -= $paymentAmount;
+    $loan->save();
+
+    return response()->json([
+        'message' => 'Malipo yamefanikiwa!',
+        'balance' => $loan->balance,
+        'minimum_next_payment' => $loan->balance * 0.10, // Onyesha kiasi cha chini kinachofuata
+    ]);
+}
+)->name('lipa_mkopo');
+
+
+Route::get('cheki_mkopo',function(){
+    return view('cheki_mkopo')->with('loanId',1);
+});

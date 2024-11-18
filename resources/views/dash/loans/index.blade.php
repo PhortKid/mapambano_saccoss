@@ -12,7 +12,8 @@
     
 <!-- DATA TABLE -->     
    <div class="row">
-   <div class="col-8 col-sm-10"></div> <div class="col-4 col-sm-2"> <div class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#addmember">ADD REPAID</div></div>
+  
+   
     <div class="col-8 col-sm-10"></div> <div class="col-4 col-sm-2"> <div class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#addmember">ADD LOANS</div></div>
   </div> 
 <div class="table-responsive">
@@ -22,10 +23,8 @@
 <thead class="table-dark">
 <tr>
 <th>#</th>
-<th>Properties No</th>
 <th>Customer Name</th>
-<th>Issued</th>
-<th>Repaid</th>
+<th>Amount</th>
 <th>Balance</th>
 <th>Date</th>
 <th>Edit</th>
@@ -43,10 +42,8 @@
    @foreach ($loans as $loan)
    <tr>
     <td><?php echo $i++ ?></td>
-    <td>{{$loan->properties_number}}</td>
     <td>{{$loan->user->firstname}}  {{$loan->user->lastname}}</td>
-    <td>{{$loan->issued}}</td>
-    <td>{{$loan->repaid}}</td>
+    <td>{{$loan->amount}}</td>
     <td>{{$loan->balance}}</td>
     <td>{{$loan->created_at}}</td>
     <!--<td><a href='#' data-bs-toggle='modal' data-id=''  data-bs-target='#pop' class='showdata' value='' name='data'><i class='fa fa-edit'></i></a></td>-->
@@ -103,25 +100,12 @@
                 </div>
                 </div>
 
-
-        <div class="mb-3 row">
-                <label for="inputText" class="col-sm-2 col-form-label">Properties No</label>
-                <div class="col-sm-10">
-                    <input type="text"  class="form-control" id="inputText"  name="properties_no" required>
-                </div>
-                </div>
-
-                <div class="mb-3 row">
-                <label for="inputText" class="col-sm-2 col-form-label">Issued</label>
-                <div class="col-sm-10">
-                    <input type="text"  class="form-control" id="inputText" name="issued" required>
-                </div>
-                </div>
+             
      @csrf
                 <div class="mb-3 row">
-                <label for="inputText" class="col-sm-2 col-form-label">Repaid</label>
+                <label for="inputText" class="col-sm-2 col-form-label">Amount</label>
                 <div class="col-sm-10">
-                    <input type="text"  class="form-control" id="inputText" name="repaid" required>
+                    <input type="text"  class="form-control" id="inputText" name="amount" required>
                 </div>
                 </div>
 

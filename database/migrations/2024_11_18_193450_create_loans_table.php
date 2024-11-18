@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->String('properties_number');
-            $table->decimal('issued');
-            $table->decimal('repaid')->nullable();
-            $table->decimal('balance', 10, 2)->virtualAs('issued - repaid');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Mtumiaji wa mkopo
+            $table->decimal('amount', 10, 2); // Kiasi cha mkopo
+            $table->decimal('balance', 10, 2); // Salio la mkopo
             $table->timestamps();
         });
     }
