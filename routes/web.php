@@ -10,6 +10,12 @@ use App\Http\Controllers\SavingsController;
 use App\Http\Controllers\DepositeController;
 use App\Http\Controllers\LoansController;
 use App\Http\Controllers\RepaidController;
+use App\Http\Controllers\UsersReportController;
+use App\Http\Controllers\UserBalanceReportController;
+use App\Http\Controllers\ReportsController;
+
+
+
 
 use App\Models\Loans;
 
@@ -52,6 +58,20 @@ Route::resource('/shares_management',SharesController::class);
 Route::resource('/savings_management',SavingsController::class);
 Route::resource('/deposites_management',DepositeController::class);
 Route::resource('/loans_management',LoansController::class);
+
+
+
+
+Route::get('/users_report', [UsersReportController::class, 'index'])->name('users.index');
+Route::get('/users_report/{id}/report', [UsersReportController::class, 'showUserReport'])->name('users.report');
+Route::get('/all_users_report', [UsersReportController::class, 'userLoanReport'])->name('all.users.report');
+Route::get('/users_balance_report', [UserBalanceReportController::class, 'index'])->name('user.balance.report');
+
+
+Route::get('/reports_shares',[ReportsController::class,'shareReport'])->name('report.shares');
+Route::get('/savings_report', [ReportsController::class, 'savingsReport'])->name('report.savings');
+Route::get('/deposite_report', [ReportsController::class, 'depositReport'])->name('report.deposite');
+
 
 
 use  App\Models\User;

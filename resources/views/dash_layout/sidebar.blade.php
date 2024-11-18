@@ -44,6 +44,8 @@
             <h6 class="collapse-header">Users:</h6>
             <a class="collapse-item" href="{{route('users_management.index')}}">Manage Users</a>
             <a class="collapse-item" href="cards.html">Inactive User</a>
+           
+            
         </div>
     </div>
 </li>
@@ -109,7 +111,29 @@
             <h6 class="collapse-header">manage:</h6>
             <a class="collapse-item" href="{{ route('loans_management.index')}}">View/Manage Loan</a>
             <a class="collapse-item" href="{{ route('repaid_management.index')}}">Lipa Mkopo</a>
-            <a class="collapse-item" href="{{route('all.applicant.loan')}}">View applicant loan</a>
+            <a class="collapse-item" href="{{ route('users.index')}}">User Loan Detail</a>
+            <a class="collapse-item" href="{{route('all.users.report')}}">View applicants loan report</a>
+            
+        </div>
+    </div>
+</li>
+
+
+<!-- Users -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo10"
+        aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Report</span>
+    </a>
+    <div id="collapseTwo10" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Users:</h6>
+            <a class="collapse-item" href="{{route('user.balance.report')}}">All report</a>
+            <a class="collapse-item" href="{{route('report.shares')}}">Shares report</a>
+            <a class="collapse-item" href="{{route('report.savings')}}">Saving report</a>
+            <a class="collapse-item" href="{{route('report.deposite')}}">Deposite report</a>
+            
         </div>
     </div>
 </li>

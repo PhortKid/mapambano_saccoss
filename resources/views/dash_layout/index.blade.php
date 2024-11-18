@@ -19,7 +19,46 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
+<style>
+    @media print {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    table, th, td {
+        border: 1px solid black;
+    }
+    button {
+        display: none; /* Usionyeshe button ya print wakati wa kuchapisha */
+    }
+}
 
+
+@media print {
+    /* Ficha kila kitu cha nje cha sehemu unayotaka kuchapisha */
+    body * {
+        visibility: hidden;
+    }
+
+    /* Onyesha tu sehemu ya ripoti ya mtumiaji */
+    .printable-area, .printable-area * {
+        visibility: visible;
+    }
+
+    /* Tofauti ya uonekano wakati wa kuchapisha */
+    .printable-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    /* Ficha button ya print wakati wa kuchapisha */
+    .btn {
+        display: none;
+    }
+}
+
+</style>
 </head>
 
 <body id="page-top">
@@ -182,7 +221,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Saccoss</span>
+                        <span>Copyright &copy; Mapambano Saccoss</span>
                     </div>
                 </div>
             </footer>
