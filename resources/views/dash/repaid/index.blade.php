@@ -27,8 +27,7 @@
 <th>Amount/Kiasi</th>
 <th>Balance/Salio</th>
 <th>Date</th>
-<th>Edit</th>
-<th>Delete</th>
+
 
 </tr>
 </thead>
@@ -47,10 +46,7 @@
     <td>{{ number_format($loan->amount, 2)}}</td>
     <td>{{number_format($loan->balance, 2)}}</td>
     <td>{{$user->created_at}}</td>
-    <!--<td><a href='#' data-bs-toggle='modal' data-id=''  data-bs-target='#pop' class='showdata' value='' name='data'><i class='fa fa-edit'></i></a></td>-->
-    <td><a href="#"  data-bs-toggle="modal" data-bs-target="#EditShare{{$user->id}}"><i class='fa fa-edit'></i></a></td>
-    <td><a href='#'  data-bs-toggle="modal" data-bs-target="#DeleteShare{{$user->id}}"><i class='fa fa-trash'></i></a></td>
-    
+
     
     </tr> 
       @endforeach

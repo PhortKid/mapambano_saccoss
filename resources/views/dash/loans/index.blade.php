@@ -27,8 +27,7 @@
 <th>Amount</th>
 <th>Balance</th>
 <th>Date</th>
-<th>Edit</th>
-<th>Delete</th>
+
 
 </tr>
 </thead>
@@ -46,12 +45,7 @@
     <td>{{$loan->amount}}</td>
     <td>{{$loan->balance}}</td>
     <td>{{$loan->created_at}}</td>
-    <!--<td><a href='#' data-bs-toggle='modal' data-id=''  data-bs-target='#pop' class='showdata' value='' name='data'><i class='fa fa-edit'></i></a></td>-->
-    <td><a href="#"  data-bs-toggle="modal" data-bs-target="#EditShare{{$loan->id}}"><i class='fa fa-edit'></i></a></td>
-    <td><a href='#'  data-bs-toggle="modal" data-bs-target="#DeleteShare{{$loan->id}}"><i class='fa fa-trash'></i></a></td>
-    
-    @include('dash.loans.edit')
-    @include('dash.loans.delete')
+ 
     </tr> 
    @endforeach
 @else 
@@ -71,7 +65,7 @@
     <div class="modal-dialog modal-dialog-scrollable modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">CREATE SHARE</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">CREATE LOAN</h5>
           <button type="button" class="battan-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
         </div>
         
