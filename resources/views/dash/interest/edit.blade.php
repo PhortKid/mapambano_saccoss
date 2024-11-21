@@ -11,16 +11,16 @@
    
 
                 <div class="mb-3 row">
-                <label for="inputText" class="col-sm-2 col-form-label">PaidIn</label>
+                <label for="inputText" class="col-sm-2 col-form-label">Tobe Paid</label>
                 <div class="col-sm-10">
                     <input type="text"  class="form-control" id="inputText" name="tobe_paid" value="{{$interest->tobe_paid}}" required>
                 </div>
                 </div>
      @csrf
                 <div class="mb-3 row">
-                <label for="inputText" class="col-sm-2 col-form-label">Withdraw</label>
+                <label for="inputText" class="col-sm-2 col-form-label">Paid</label>
                 <div class="col-sm-10">
-                    <input type="text"  class="form-control" id="inputText" name="withdraw" value="{{$interest->withdraw}}" required>
+                    <input type="text"  class="form-control" id="inputText" name="withdraw" value="{{$interest->paid}}" required>
                 </div>
                 </div>
 

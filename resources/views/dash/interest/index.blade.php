@@ -22,7 +22,7 @@
 <tr>
 <th>#</th>
 <th>Customer Name</th>
-<th>PaidIn</th>
+<th>Tobe Paid</th>
 <th>paid</th>
 <th>Balance</th>
 <th>Date</th>
@@ -47,11 +47,11 @@
     <td>{{number_format($interest->balance,2)}}</td>
     <td>{{$interest->date}}</td>
     <!--<td><a href='#' data-bs-toggle='modal' data-id=''  data-bs-target='#pop' class='showdata' value='' name='data'><i class='fa fa-edit'></i></a></td>-->
-    <td><a href="#"  data-bs-toggle="modal" data-bs-target="#Editinterest{{$interest->id}}"><i class='fa fa-edit text-primary'></i></a></td>
-    <td><a href='#'  data-bs-toggle="modal" data-bs-target="#Deleteinterest{{$interest->id}}"><i class='fa fa-trash text-danger'></i></a></td>
+    <td><a href="#"  data-bs-toggle="modal" data-bs-target="#EditInterest{{$interest->id}}"><i class='fa fa-edit text-primary'></i></a></td>
+    <td><a href='#'  data-bs-toggle="modal" data-bs-target="#DeleteInterest{{$interest->id}}"><i class='fa fa-trash text-danger'></i></a></td>
     
-    @include('dash.interests.edit')
-    @include('dash.interests.delete')
+    @include('dash.interest.edit')
+    @include('dash.interest.delete')
     </tr> 
    @endforeach
 @else 
@@ -104,7 +104,7 @@
 
 
                 <div class="mb-3 row">
-                <label for="inputText" class="col-sm-2 col-form-label">TO BE PAID</label>
+                <label for="inputText" class="col-sm-2 col-form-label">Tobe Paid</label>
                 <div class="col-sm-10">
                     <input type="text"  class="form-control" id="inputText" name="tobe_paid" required>
                 </div>

@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->decimal('tobe_paid');
-            $table->decimal('paid')->nullable();
+            $table->decimal('tobe_paid',10, 2);
+            $table->String('date');
+            $table->decimal('paid',10, 2)->nullable();
             $table->decimal('balance', 10, 2)->virtualAs('tobe_paid - paid');
             $table->timestamps();
         });

@@ -135,6 +135,23 @@
     </div>
 </li>
 
+<!-- Interest -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo20"
+        aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Interest </span>
+    </a>
+    <div id="collapseTwo20" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage:</h6>
+            <a class="collapse-item" href="{{route('interest_management.index')}}">All </a>
+           
+            
+        </div>
+    </div>
+</li>
+
 <!-- Report -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo10"
@@ -153,6 +170,8 @@
         </div>
     </div>
 </li>
+
+
 
 
 
