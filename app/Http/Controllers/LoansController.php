@@ -46,9 +46,10 @@ class LoansController extends Controller
             $loan = Loans::create([
                 'user_id' => $request->applicant,
                 'date' => $request->date,
-                'amount' => $request->amount*$request->rate+$request->amount,
-                'balance' => $request->amount*$request->rate+$request->amount,
-                
+               // 'amount' => $request->amount*$request->rate+$request->amount,
+              //  'balance' => $request->amount*$request->rate+$request->amount,
+                'amount' => $request->amount,
+                'balance' => $request->amount
             ]);
         
        
@@ -78,24 +79,7 @@ class LoansController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data =$request->validate(
-            [
-            'properties_no'=>['required'],
-           // 'user_id'=>['required'],
-            'issued'=>['required'],
-            'repaid'=>['required'],
-            ]
-        );
-
- 
-
-        $loan=Loans::find($id);
-        $loan->properties_number=$request->input('properties_no');
-       // $loan->user_id=$request->input('applicant');
-        $loan->issued=$request->input('issued');
-        $loan->repaid=$request->input('repaid');
        
-        $loan->save();
         return redirect('/loans_management')->with('success','Loan Updated');
     }
 

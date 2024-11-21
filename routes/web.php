@@ -15,6 +15,7 @@ use App\Http\Controllers\UserBalanceReportController;
 use App\Http\Controllers\ReportsController;
 
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\InterestController;
 
 use App\Http\Controllers\ChangePasswordController;
 
@@ -66,6 +67,8 @@ Route::resource('/savings_management',SavingsController::class);
 Route::resource('/deposites_management',DepositeController::class);
 Route::resource('/loans_management',LoansController::class);
 Route::resource('/expenses_management',ExpenseController::class);
+Route::resource('/interest_management',InterestController::class);
+
 
 });
 

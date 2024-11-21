@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">LOANS</h1>
+    <h1 class="h3 mb-0 text-gray-800">INTEREST MANAGEMENT</h1>
     
 </div>
 
@@ -12,9 +12,7 @@
     
 <!-- DATA TABLE -->     
    <div class="row">
-  
-   
-    <div class="col-8 col-sm-10"></div> <div class="col-4 col-sm-2"> <div class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#addmember">ADD LOANS</div></div>
+    <div class="col-8 col-sm-10"></div> <div class="col-4 col-sm-2"> <div class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#addmember">Interest</div></div>
   </div> 
 <div class="table-responsive">
 
@@ -24,11 +22,12 @@
 <tr>
 <th>#</th>
 <th>Customer Name</th>
-<th>Amount</th>
+<th>PaidIn</th>
+<th>paid</th>
 <th>Balance</th>
 <th>Date</th>
-<th>Action</th>
-
+<th>Edit</th>
+<th>Delete</th>
 
 </tr>
 </thead>
@@ -37,21 +36,22 @@
 <tbody class="table table-striped table-hover ">
 
   <?php $i=1;  ?>
-@if(count($loans)>0)
+@if(count($interests)>0)
     
-   @foreach ($loans as $loan)
+   @foreach ($interests as $interest)
    <tr>
     <td><?php echo $i++ ?></td>
-    <td>{{$loan->user->firstname}}  {{$loan->user->lastname}}</td>
-    <td>{{number_format($loan->amount,2)}}</td>
-    <td>{{number_format($loan->balance,2)}}</td>
-    <td>{{$loan->created_at}}</td>
-  <!--  <td><a href="#"  data-bs-toggle="modal" data-bs-target="#EditLoans{{$loan->id}}"><i class='fa fa-edit text-primary'></i></a></td> -->
-    <td><a href='#'  data-bs-toggle="modal" data-bs-target="#DeleteLoans{{$loan->id}}"><i class='fa fa-trash text-danger'></i></a></td>
+    <td> {{$interest->user->firstname}}  {{$interest->user->middlename}}   {{$interest->user->lastname}}</td>
+    <td>{{number_format($interest->tobe_paid,2)}}</td>
+    <td>{{number_format($interest->paid,2)}}</td>
+    <td>{{number_format($interest->balance,2)}}</td>
+    <td>{{$interest->date}}</td>
+    <!--<td><a href='#' data-bs-toggle='modal' data-id=''  data-bs-target='#pop' class='showdata' value='' name='data'><i class='fa fa-edit'></i></a></td>-->
+    <td><a href="#"  data-bs-toggle="modal" data-bs-target="#Editinterest{{$interest->id}}"><i class='fa fa-edit text-primary'></i></a></td>
+    <td><a href='#'  data-bs-toggle="modal" data-bs-target="#Deleteinterest{{$interest->id}}"><i class='fa fa-trash text-danger'></i></a></td>
     
-    
-    @include('dash.loans.delete')
- 
+    @include('dash.interests.edit')
+    @include('dash.interests.delete')
     </tr> 
    @endforeach
 @else 
@@ -71,13 +71,13 @@
     <div class="modal-dialog modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">CREATE LOAN</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">CREATE INTEREST</h5>
           <button type="button" class="battan-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
         </div>
         
         <div class="modal-body">
           
-       <form action="{{route('loans_management.store')}}" method="post">
+       <form action="{{route('interest_management.store')}}" method="post">
        
 
 
@@ -100,40 +100,34 @@
                 </div>
                 </div>
 
-             
+
+
+
+                <div class="mb-3 row">
+                <label for="inputText" class="col-sm-2 col-form-label">TO BE PAID</label>
+                <div class="col-sm-10">
+                    <input type="text"  class="form-control" id="inputText" name="tobe_paid" required>
+                </div>
+                </div>
      @csrf
                 <div class="mb-3 row">
-                <label for="inputText" class="col-sm-2 col-form-label">Amount</label>
+                <label for="inputText" class="col-sm-2 col-form-label">PAID</label>
                 <div class="col-sm-10">
-                    <input type="text"  class="form-control" id="inputText" name="amount" required>
+                    <input type="text"  class="form-control" id="inputText" name="paid" required>
                 </div>
                 </div>
-<!--
-                <div class="mb-3 row">
-                <label for="inputText" class="col-sm-2 col-form-label">Rate</label>
-                <div class="col-sm-10">
-                  <select name="rate" id="" class="form-control">
-                  <option value="">--- Select Rate --</option>
-                  <option value="0.1">With interest 10%</option>
-                  <option value="0">Without interest 0%</option>
-
-                  </select>
-
-                </div>
-                </div>  -->
-
 
                 <div class="mb-3 row">
                 <label for="inputText" class="col-sm-2 col-form-label">DATE</label>
                 <div class="col-sm-10">
-                    <input type="date"  class="form-control" id="inputText" name="date" >
+                    <input type="date"  class="form-control" id="inputText" name="date" required>
                 </div>
                 </div>
 
             </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-secondary">Submit</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
        
           </form>
         </div>
