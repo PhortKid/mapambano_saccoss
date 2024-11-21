@@ -6,7 +6,7 @@
     <h1 class="my-4">All Applicant report</h1>
     <?php $i=1;  ?>
     <!-- Orodha ya Watumiaji na Mikopo -->
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered" id="example">
         <thead class="table-dark">
             <tr>
                 <th>#</th>
@@ -37,7 +37,7 @@
 
                 <tr>
                     <td>{{ $i++ }}</td>
-                    <td>{{ $user->firstname }} {{ $user->lastname }}</td>
+                    <td>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</td>
                     <td>{{ $user->phone_number }}</td>
                     <td>{{ number_format($userLoanAmount, 2) }}</td>
                     <td>{{ number_format($userBalance, 2) }}</td>

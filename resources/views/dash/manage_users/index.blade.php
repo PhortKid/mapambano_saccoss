@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">MANAGE MEMBERS</h1>
+    <h1 class="h3 mb-0 text-gray-800">MANAGE USERS</h1>
     
 </div>
 
@@ -12,7 +12,7 @@
     
 <!-- DATA TABLE -->     
    <div class="row">
-    <div class="col-8 col-sm-10"></div> <div class="col-4 col-sm-2"> <div class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#addmember">ADD MEMBER</div></div>
+    <div class="col-8 col-sm-10"></div> <div class="col-4 col-sm-2"> <div class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#addmember">ADD USERS</div></div>
   </div> 
 <div class="table-responsive">
 
@@ -39,7 +39,7 @@
    @foreach ($users as $user)
    <tr>
     <td><?php echo $i++ ?></td>
-    <td> {{$user->middlename}} {{$user->lastname}}</td>
+    <td>{{$user->firstname}} {{$user->middlename}} {{$user->lastname}}</td>
     <td>{{$user->email}}</td>
     <td>{{$user->phone_number}}</td>
     <!--<td><a href='#' data-bs-toggle='modal' data-id=''  data-bs-target='#pop' class='showdata' value='' name='data'><i class='fa fa-edit'></i></a></td>-->

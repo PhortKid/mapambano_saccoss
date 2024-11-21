@@ -12,16 +12,16 @@
     
 <!-- DATA TABLE -->     
    <div class="row">
-    <div class="col-8 col-sm-10"></div> <div class="col-4 col-sm-2"> <div class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#addmember">ADD savingS</div></div>
+    <div class="col-8 col-sm-10"></div> <div class="col-4 col-sm-2"> <div class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#addmember">Add saving</div></div>
   </div> 
 <div class="table-responsive">
 
-<table   class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+<table   class="table table-bordered" id="example" width="100%" cellspacing="0">
 
 <thead class="table-dark">
 <tr>
 <th>#</th>
-<th>Properties No</th>
+<!--<th>Properties No</th>-->
 <th>Customer Name</th>
 <th>PaidIn</th>
 <th>Withdraw</th>
@@ -42,15 +42,16 @@
    @foreach ($savings as $saving)
    <tr>
     <td><?php echo $i++ ?></td>
-    <td> {{$saving->properties_number}}</td>
-    <td> {{$saving->user->firstname}}  {{$saving->user->lastname}}</td>
-    <td>{{$saving->paid_in}}</td>
-    <td>{{$saving->withdraw}}</td>
-    <td>{{$saving->balance}}</td>
-    <td>{{$saving->created_at}}</td>
+  <!--  <td> {{$saving->properties_number}}</td> -->
+    <td> {{$saving->user->firstname}} {{$saving->user->middlename}} {{$saving->user->lastname}}</td>
+    <td>{{number_format($saving->paid_in)}}</td>
+    <td>{{number_format($saving->withdraw)}}</td>
+    <td>{{number_format($saving->balance)}}</td>
+    <td>{{$saving->date}}</td>
+   <!-- <td>{{$saving->created_at}}</td> -->
     <!--<td><a href='#' data-bs-toggle='modal' data-id=''  data-bs-target='#pop' class='showdata' value='' name='data'><i class='fa fa-edit'></i></a></td>-->
-    <td><a href="#"  data-bs-toggle="modal" data-bs-target="#Editsaving{{$saving->id}}"><i class='fa fa-edit'></i></a></td>
-    <td><a href='#'  data-bs-toggle="modal" data-bs-target="#Deletesaving{{$saving->id}}"><i class='fa fa-trash'></i></a></td>
+    <td><a href="#"  data-bs-toggle="modal" data-bs-target="#Editsaving{{$saving->id}}"><i class='fa fa-edit text-primary'></i></a></td>
+    <td><a href='#'  data-bs-toggle="modal" data-bs-target="#Deletesaving{{$saving->id}}"><i class='fa fa-trash text-danger'></i></a></td>
     
     @include('dash.savings.edit')
     @include('dash.savings.delete')
@@ -70,7 +71,7 @@
       
 
 <div class="modal fade " id="addmember" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-dialog modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">CREATE SAVING</h5>
@@ -94,7 +95,7 @@
     
                 @foreach ($users as $user)
                   
-                <option value="{{$user->id}}">{{$user->firtname}} {{$user->lastname}}</option>
+                <option value="{{$user->id}}">{{$user->firstname}} {{$user->middlename}} {{$user->lastname}}</option>
                
                  @endforeach
                  @endif
@@ -103,12 +104,12 @@
                 </div>
 
 
-        <div class="mb-3 row">
+    <!--    <div class="mb-3 row">
                 <label for="inputText" class="col-sm-2 col-form-label">Properties No</label>
                 <div class="col-sm-10">
-                    <input type="text"  class="form-control" id="inputText"  name="properties_no" required>
+                    <input type="text"  class="form-control" id="inputText"  name="properties_no" >
                 </div>
-                </div>
+                </div>  -->
 
                 <div class="mb-3 row">
                 <label for="inputText" class="col-sm-2 col-form-label">PaidIn</label>
@@ -124,10 +125,17 @@
                 </div>
                 </div>
 
+                <div class="mb-3 row">
+                <label for="inputText" class="col-sm-2 col-form-label">DATE</label>
+                <div class="col-sm-10">
+                    <input type="date"  class="form-control" id="inputText" name="date" required>
+                </div>
+                </div>
+
             </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-secondary">Submit</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
        
           </form>
         </div>
@@ -137,5 +145,4 @@
 
 
 @endsection
-
 

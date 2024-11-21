@@ -14,7 +14,14 @@ use App\Http\Controllers\UsersReportController;
 use App\Http\Controllers\UserBalanceReportController;
 use App\Http\Controllers\ReportsController;
 
+use App\Http\Controllers\ExpenseController;
 
+use App\Http\Controllers\ChangePasswordController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('/change-password', [ChangePasswordController::class, 'showForm'])->name('change.password.form');
+    Route::post('/change-password', [ChangePasswordController::class, 'changePassword'])->name('change.password');
+});
 
 
 use App\Models\Loans;
@@ -37,12 +44,12 @@ return print_r($userDetail);
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return redirect('/dash');
+    });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -51,27 +58,27 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
+Route::middleware('auth')->group(function () {
 Route::resource('/dash',DashboardController::class);
 Route::resource('/users_management',UsersManagementController::class);
 Route::resource('/shares_management',SharesController::class);
 Route::resource('/savings_management',SavingsController::class);
 Route::resource('/deposites_management',DepositeController::class);
 Route::resource('/loans_management',LoansController::class);
+Route::resource('/expenses_management',ExpenseController::class);
+
+});
 
 
-
-
+Route::middleware('auth')->group(function () {
 Route::get('/users_report', [UsersReportController::class, 'index'])->name('users.index');
 Route::get('/users_report/{id}/report', [UsersReportController::class, 'showUserReport'])->name('users.report');
 Route::get('/all_users_report', [UsersReportController::class, 'userLoanReport'])->name('all.users.report');
 Route::get('/users_balance_report', [UserBalanceReportController::class, 'index'])->name('user.balance.report');
-
-
 Route::get('/reports_shares',[ReportsController::class,'shareReport'])->name('report.shares');
 Route::get('/savings_report', [ReportsController::class, 'savingsReport'])->name('report.savings');
 Route::get('/deposite_report', [ReportsController::class, 'depositReport'])->name('report.deposite');
-
+});
 
 
 use  App\Models\User;
@@ -117,19 +124,21 @@ Route::get('/all_applicant_share_report/{user_id}', function($user_id) {
 //SAVING CONTROLLER
 
 Route::get('/all_applicant_saving', function() {
-    $users = User::where('role', 'applicant')->get(); 
-  
+   // $users = User::where('role', 'admin')->get(); 
+   $users=User::all();
     return view('dash.savings.applicant')->with('users', $users);
 })->name('all.applicant.saving');
 
 Route::get('/all_applicant_saving/{user_id}', function($user_id) {
-    $user = User::where('role', 'applicant')->where('id', $user_id)->first();
+   // $user = User::where('role', 'admin')->where('id', $user_id)->first();
+   $user=User::all();
     $savings = $user ? $user->savings : [];
     return view('dash.savings.applicant_saving')->with('savings', $savings);
 });
 
 Route::get('/all_applicant_saving_report/{user_id}', function($user_id) {
-    $user = User::where('role', 'applicant')->where('id', $user_id)->first();
+   // $user = User::where('role', 'applicant')->where('id', $user_id)->first();
+   $user=User::all();
     $savings = $user ? $user->savings : [];
     return view('dash.savings.applicant_saving_report')->with('savings', $savings);
 });

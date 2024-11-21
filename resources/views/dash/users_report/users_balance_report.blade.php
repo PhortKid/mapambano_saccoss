@@ -1,10 +1,10 @@
 @extends('dash_layout.index')
 
 @section('content')
-<div class="container printable-area">
+<div class="container ">
     <h1 class="my-4">Ripoti ya Balance ya Watumiaji</h1>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered printable-area" id="example">
         <thead class="table-dark">
             <tr>
                 <th>#</th>
@@ -43,7 +43,7 @@
 
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ $user->firstname }} {{ $user->lastname }}</td>
+                    <td>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</td>
                     <td>{{ number_format($userDepositBalance, 2) }}</td>
                     <td>{{ number_format($userShareBalance, 2) }}</td>
                     <td>{{ number_format($userSavingBalance, 2) }}</td>

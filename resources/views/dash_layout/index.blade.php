@@ -17,6 +17,15 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
+
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="{{asset('datatables/dataTables.bootstrap4.min.css')}}">
+	<link rel="stylesheet" href="{{asset('datatables/buttons.bootstrap4.min.css')}}">
+	<link rel="stylesheet" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
+
     <!-- Custom styles for this template-->
     <link href="{{asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
 <style>
@@ -111,57 +120,7 @@
                             </div>
                         </li>
 
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                              <!--  <span class="badge badge-danger badge-counter">3+</span>-->
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
-
+                       <!-- ALERT --->
                        
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -169,25 +128,19 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Phort Chrispin</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</span>
                                <!-- <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">-->
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
+       
+                                <a class="dropdown-item" href="{{route('change.password.form')}}">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
+                                    Change password
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
+                            
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -243,17 +196,21 @@
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
+                <form action="{{ route('logout') }}" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
+                @csrf
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    
+                    <input type="submit" value="Logout" class="btn btn-primary">
                 </div>
+</form>
             </div>
         </div>
     </div>
@@ -276,6 +233,32 @@
     <script src="{{asset('assets/js/demo/chart-pie-demo.js')}}"></script>
      
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+<script src="{{asset('datatables/jquery-3.3.1.js')}}"></script>
+    <script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('datatables/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('datatables/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('datatables/jszip.min.js')}}"></script>
+    <script src="{{asset('datatables/pdfmake.min.js')}}"></script>
+    <script src="{{asset('datatables/vfs_fonts.js')}}"></script>
+    <script src="{{asset('datatables/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('datatables/buttons.print.min.js')}}"></script>
+    <script src="{{asset('datatables/buttons.colVis.min.js')}}"></script>
+    <script src="{{asset('datatables/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('datatables/responsive.bootstrap4.min.js')}}"></script>
+    <script>
+	$(document).ready(function() {
+	    var table = $('#example').DataTable( {
+	        lengthChange: false,
+	        buttons: [ 'copy', 'excel', 'csv', 'pdf', 'colvis' ]
+	    } );
+	 
+	    table.buttons().container()
+	        .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+	} );
+     </script>
 </body>
 
 </html>

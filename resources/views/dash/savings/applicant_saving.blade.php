@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">savingS</h1>
+    <h1 class="h3 mb-0 text-gray-800">savings</h1>
     
 </div>
 
@@ -42,9 +42,9 @@
     <td><?php echo $i++ ?></td>
     <td> {{$saving->properties_number}}</td>
     <td> {{$saving->user->firstname}}  {{$saving->user->lastname}}</td>
-    <td>{{$saving->paid_in}}</td>
-    <td>{{$saving->withdraw}}</td>
-    <td>{{$saving->balance}}</td>
+    <td>{{number_format($saving->paid_in)}}</td>
+    <td>{{number_format($saving->withdraw)}}</td>
+    <td>{{number_format($saving->balance)}}</td>
     <td>{{$saving->created_at}}</td>
     <!--<td><a href='#' data-bs-toggle='modal' data-id=''  data-bs-target='#pop' class='showdata' value='' name='data'><i class='fa fa-edit'></i></a></td>-->
     <td><a href="#"  data-bs-toggle="modal" data-bs-target="#Editsaving{{$saving->id}}"><i class='fa fa-edit'></i></a></td>

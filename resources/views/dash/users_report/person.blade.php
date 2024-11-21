@@ -5,7 +5,7 @@
     <h1 class="my-4">Applicant Report</h1>
     <div class="card mb-4">
         <div class="card-body">
-            <h4 class="card-title">Jina: {{ $user->firstname}} {{ $user->firstname}}</h4>
+            <h4 class="card-title">Fullname: {{ $user->firstname}} {{ $user->middlename}} {{ $user->lastname}}</h4>
             <p class="card-text">Phone: {{ $user->phone_number }}</p>
         </div>
     </div>
@@ -22,7 +22,7 @@
                         <tr>
                             <th>#</th>
                             <th>Repaid Amount</th>
-                            <th>Fee (10%)</th>
+                            <!--<th>Fee (10%)</th>-->
                             <th>Date</th>
                         </tr>
                     </thead>
@@ -39,7 +39,7 @@
                             <tr>
                                 <td>{{ $transaction->id }}</td>
                                 <td>{{ number_format($transaction->amount, 2) }}</td>
-                                <td>{{ number_format($transaction->fee, 2) }}</td>
+                            <!--    <td>{{ number_format($transaction->fee, 2) }}</td>-->
                                 <td>{{ $transaction->created_at->format('d/m/Y') }}</td>
                             </tr>
                         @endforeach
@@ -48,7 +48,7 @@
                     <!-- Footer ya jumla -->
                     <tfoot class="table-dark">
                         <tr>
-                            <td colspan="3" class="text-right"><strong>Total Repaid</strong></td>
+                            <td colspan="2" class="text-right"><strong>Total Repaid</strong></td>
                             <td><strong>{{ number_format($totalPaid, 2) }}</strong></td>
                         </tr>
                     </tfoot>

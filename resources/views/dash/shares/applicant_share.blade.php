@@ -42,9 +42,9 @@
     <td><?php echo $i++ ?></td>
     <td> {{$share->properties_number}}</td>
     <td> {{$share->user->firstname}}  {{$share->user->lastname}}</td>
-    <td>{{$share->paid_in}}</td>
-    <td>{{$share->withdraw}}</td>
-    <td>{{$share->balance}}</td>
+    <td>{{number_format($share->paid_in)}}</td>
+    <td>{{number_format($share->withdraw)}}</td>
+    <td>{{number_format($share->balance)}}</td>
     <td>{{$share->created_at}}</td>
     <!--<td><a href='#' data-bs-toggle='modal' data-id=''  data-bs-target='#pop' class='showdata' value='' name='data'><i class='fa fa-edit'></i></a></td>-->
     <td><a href="#"  data-bs-toggle="modal" data-bs-target="#EditShare{{$share->id}}"><i class='fa fa-edit'></i></a></td>

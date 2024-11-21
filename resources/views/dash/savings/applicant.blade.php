@@ -38,7 +38,7 @@
    @foreach ($users as $user)
    <tr>
     <td><?php echo $i++ ?></td>
-    <td> {{$user->middlename}} {{$user->lastname}}</td>
+    <td>{{$user->firstname}} {{$user->middlename}} {{$user->lastname}}</td>
     <td>{{$user->email}}</td>
     <td>{{$user->phone_number}}</td>
     <td>{{$user->created_at}}</td>
@@ -67,7 +67,7 @@
       
 
 <div class="modal fade " id="addmember" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-dialog modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">ADD USER</h5>

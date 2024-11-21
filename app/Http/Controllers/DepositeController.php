@@ -36,6 +36,8 @@ class DepositeController extends Controller
             'user_id'=>['nullable'],
             'paid_in'=>['required'],
             'withdraw'=>['required'],
+            'date'=>['required'],
+
             ]
         );
 
@@ -44,6 +46,7 @@ class DepositeController extends Controller
         $deposites=new Deposite;
         $deposites->user_id=$request->input('applicant');
         $deposites->paid_in=$request->input('paid_in');
+        $deposites->date=$request->input('date');
         $deposites->withdraw=$request->input('withdraw');
        
         $deposites->save();
@@ -76,6 +79,7 @@ class DepositeController extends Controller
             [
             'paid_in'=>['required'],
             'withdraw'=>['required'],
+            'date'=>['required'],
             ]
         );
 
@@ -83,9 +87,10 @@ class DepositeController extends Controller
 
         $deposites=Deposite::find($id);
         $deposites->paid_in=$request->input('paid_in');
+        $deposites->date=$request->input('date');
         $deposites->withdraw=$request->input('withdraw');
        
-        $deposite->save();
+        $deposites->save();
         return redirect('/deposites_management')->with('success','Saving Updated');
     }
 

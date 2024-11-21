@@ -25,7 +25,7 @@
                 @php
                     // Assuming the 'share' relationship has transactions with 'paid_in' and 'withdrawn' fields
                     $paidIn = $user->shares->sum('paid_in');
-                    $withdrawn = $user->shares->sum('withdrawn');
+                    $withdrawn = $user->shares->sum('withdraw');
                     $balance = $paidIn - $withdrawn;
 
                     // Accumulate totals
@@ -36,7 +36,7 @@
 
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ $user->firstname }} {{ $user->lastname }}</td>
+                    <td>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</td>
                     <td>{{ number_format($paidIn, 2) }}</td>
                     <td>{{ number_format($withdrawn, 2) }}</td>
                     <td>{{ number_format($balance, 2) }}</td>

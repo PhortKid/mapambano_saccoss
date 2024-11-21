@@ -36,10 +36,11 @@ class SharesController extends Controller
     {
         $data =$request->validate(
             [
-            'properties_no'=>['required'],
+            'properties_no'=>['nullable'],
             'user_id'=>['nullable'],
             'paid_in'=>['required'],
             'withdraw'=>['required'],
+            'date'=>['required'],
             ]
         );
 
@@ -50,6 +51,7 @@ class SharesController extends Controller
         $share->user_id=$request->input('applicant');
         $share->paid_in=$request->input('paid_in');
         $share->withdraw=$request->input('withdraw');
+        $share->date=$request->input('date');
        
         $share->save();
 
@@ -84,6 +86,7 @@ class SharesController extends Controller
            // 'user_id'=>['required'],
             'paid_in'=>['required'],
             'withdraw'=>['required'],
+            'date'=>['required'],
             ]
         );
 
@@ -94,6 +97,7 @@ class SharesController extends Controller
        // $share->user_id=$request->input('applicant');
         $share->paid_in=$request->input('paid_in');
         $share->withdraw=$request->input('withdraw');
+        $share->date=$request->input('date');
        
         $share->save();
         return redirect('/shares_management')->with('success','Share Updated');

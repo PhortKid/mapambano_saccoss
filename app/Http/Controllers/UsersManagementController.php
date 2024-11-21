@@ -45,7 +45,7 @@ class UsersManagementController extends Controller
         );
 
         
-        $password= str()->random(6);
+        $password= "Mpya@2025";
         //$password= fake()->randomNumber(6);
 
         $user=new User;

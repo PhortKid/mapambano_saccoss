@@ -41,9 +41,9 @@
     <td><?php echo $i++ ?></td>
     <td> {{$saving->properties_number}}</td>
     <td> {{$saving->user->firstname}}  {{$saving->user->lastname}}</td>
-    <td>{{$saving->paid_in}}</td>
-    <td>{{$saving->withdraw}}</td>
-    <td>{{$saving->balance}}</td>
+    <td>{{number_format($saving->paid_in,2)}}</td>
+    <td>{{number_format($saving->withdraw,2)}}</td>
+    <td>{{number_format($saving->balance,2)}}</td>
     <td>{{$saving->created_at}}</td>
  
     </tr> 

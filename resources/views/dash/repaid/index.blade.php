@@ -42,7 +42,7 @@
    @foreach ($user->loans as $loan)
    <tr>
     <td><?php echo $i++ ?></td>
-    <td>{{$user->firstname}}  {{$user->lastname}}</td>
+    <td>{{$user->firstname}} {{$user->middlename}} {{$user->lastname}}</td>
     <td>{{ number_format($loan->amount, 2)}}</td>
     <td>{{number_format($loan->balance, 2)}}</td>
     <td>{{$user->created_at}}</td>
@@ -84,7 +84,7 @@
     <select name="loan_id" id="user" class="form-control"  required>
         <option value="">-- Chagua Mtumiaji na Mkopo --</option>
         @foreach ($users as $user)
-            <optgroup label="{{ $user->firstname }}">
+            <optgroup label="{{$user->firstname}} {{$user->middlename}} {{$user->lastname}}">
                 @foreach ($user->loans as $loan)
                     <option value="{{ $loan->id }}">
                         Mkopo ID: {{ $loan->id }} - Salio: {{ number_format($loan->balance, 2) }}

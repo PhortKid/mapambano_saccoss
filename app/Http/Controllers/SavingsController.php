@@ -27,6 +27,7 @@ class SavingsController extends Controller
             [
             'user_id'=>['nullable'],
             'paid_in'=>['required'],
+            'date'=>['required'],
             'withdraw'=>['required'],
             ]
         );
@@ -37,7 +38,7 @@ class SavingsController extends Controller
         $savings->user_id=$request->input('applicant');
         $savings->paid_in=$request->input('paid_in');
         $savings->withdraw=$request->input('withdraw');
-       
+        $savings->date=$request->input('date');
         $savings->save();
 
         return redirect('/savings_management')->with('success','Saving Created');
@@ -49,9 +50,9 @@ class SavingsController extends Controller
     {
         $data =$request->validate(
             [
-            'properties_no'=>['required'],
            // 'user_id'=>['required'],
             'paid_in'=>['required'],
+            'date'=>['required'],
             'withdraw'=>['required'],
             ]
         );
@@ -59,12 +60,13 @@ class SavingsController extends Controller
  
 
         $savings=Savings::find($id);
-        $savings->properties_number=$request->input('properties_no');
+       
        // $share->user_id=$request->input('applicant');
         $savings->paid_in=$request->input('paid_in');
+        $savings->date=$request->input('date');
         $savings->withdraw=$request->input('withdraw');
        
-        $saving->save();
+        $savings->save();
         return redirect('/savings_management')->with('success','Saving Updated');
     }
 

@@ -14,7 +14,7 @@
  
 <div class="table-responsive">
 
-<table   class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+<table   class="table table-bordered" id="example" width="100%" cellspacing="0">
 
 <thead class="table-dark">
 <tr>
@@ -41,9 +41,9 @@
     <td><?php echo $i++ ?></td>
     <td> {{$loan->properties_number}}</td>
     <td> {{$loan->user->firstname}}  {{$loan->user->lastname}}</td>
-    <td>{{$loan->issued}}</td>
-    <td>{{$loan->repaid}}</td>
-    <td>{{$loan->balance}}</td>
+    <td>{{number_format($loan->issued,2)}}</td>
+    <td>{{number_format($loan->repaid,2)}}</td>
+    <td>{{number_format($loan->balance,2)}}</td>
     <td>{{$loan->created_at}}</td>
  
     </tr> 

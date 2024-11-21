@@ -2,12 +2,12 @@
       <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center mb-4" href="index.html">
+<a class="sidebar-brand d-flex align-items-center justify-content-center mb-4" href="{{url('/dash')}}">
      
     <!-- rotate-n-15 -->
     <div class="sidebar-brand-icon ">
        <!-- <i class="fa fa-money-bill"></i>-->
-        <img src="/logo.png" alt="" class="mt-4 " style="height:160px">
+        <img src="{{asset('logo.png')}}" alt="" class="mt-4 " style="height:160px">
     </div>
    <!-- <div class="sidebar-brand-text mx-3">SACCOSS </div>-->
 </a>
@@ -17,7 +17,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item active">
-    <a class="nav-link" href="">
+    <a class="nav-link" href="{{url('/dash')}}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
@@ -43,7 +43,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Users:</h6>
             <a class="collapse-item" href="{{route('users_management.index')}}">Manage Users</a>
-            <a class="collapse-item" href="cards.html">Inactive User</a>
+            <!--<a class="collapse-item" href="cards.html">Inactive User</a>-->
            
             
         </div>
@@ -109,17 +109,33 @@
     <div id="collapseTwo5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">manage:</h6>
-            <a class="collapse-item" href="{{ route('loans_management.index')}}">View/Manage Loan</a>
-            <a class="collapse-item" href="{{ route('repaid_management.index')}}">Pay Loan</a>
-            <a class="collapse-item" href="{{ route('users.index')}}">User Loan Detail</a>
-            <a class="collapse-item" href="{{route('all.users.report')}}">All applicant Loan Report</a>
+            <a class="collapse-item" href="{{ route('loans_management.index')}}">Manage Loan/Ratibu Mikopo</a>
+            <a class="collapse-item" href="{{ route('repaid_management.index')}}">Pay Loan/Lipa Mkopo</a>
+            <a class="collapse-item" href="{{ route('users.index')}}">Applicant Loan Detail</a>
+            <a class="collapse-item" href="{{route('all.users.report')}}">All Applicant Loan Report</a>
             
         </div>
     </div>
 </li>
 
 
-<!-- Users -->
+<!-- EXPENSE -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo11"
+        aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Expenses</span>
+    </a>
+    <div id="collapseTwo11" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Users:</h6>
+            <a class="collapse-item" href="{{route('expenses_management.index')}}">All Expenses</a>
+           
+        </div>
+    </div>
+</li>
+
+<!-- Report -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo10"
         aria-expanded="true" aria-controls="collapseTwo">
@@ -137,6 +153,10 @@
         </div>
     </div>
 </li>
+
+
+
+
 
 
 <!-- Divider -->

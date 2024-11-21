@@ -34,16 +34,21 @@ class LoansController extends Controller
         $data =$request->validate(
             ['applicant'=>['required'],
             'amount'=>['required'],
+            'rate'=>['required'],
             ]
         );
-
+    
  
 
-        $loan = Loans::create([
-            'user_id' => $request->applicant,
-            'amount' => $request->amount,
-            'balance' => $request->amount,
-        ]);
+        
+ 
+            $loan = Loans::create([
+                'user_id' => $request->applicant,
+                'amount' => $request->amount*$request->rate+$request->amount,
+                'balance' => $request->amount*$request->rate+$request->amount,
+            ]);
+        
+       
     
        // return response()->json(['message' => 'Mkopo umeundwa kwa mafanikio!', 'loan' => $loan]);
         return redirect('/loans_management')->with('success','Mkopo umeundwa kwa mafanikio!');

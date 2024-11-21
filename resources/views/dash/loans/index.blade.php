@@ -18,7 +18,7 @@
   </div> 
 <div class="table-responsive">
 
-<table   class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+<table   class="table table-bordered" id="example" width="100%" cellspacing="0">
 
 <thead class="table-dark">
 <tr>
@@ -27,6 +27,7 @@
 <th>Amount</th>
 <th>Balance</th>
 <th>Date</th>
+<th>Action</th>
 
 
 </tr>
@@ -42,9 +43,14 @@
    <tr>
     <td><?php echo $i++ ?></td>
     <td>{{$loan->user->firstname}}  {{$loan->user->lastname}}</td>
-    <td>{{$loan->amount}}</td>
-    <td>{{$loan->balance}}</td>
+    <td>{{number_format($loan->amount,2)}}</td>
+    <td>{{number_format($loan->balance,2)}}</td>
     <td>{{$loan->created_at}}</td>
+  <!--  <td><a href="#"  data-bs-toggle="modal" data-bs-target="#EditLoans{{$loan->id}}"><i class='fa fa-edit text-primary'></i></a></td> -->
+    <td><a href='#'  data-bs-toggle="modal" data-bs-target="#DeleteLoans{{$loan->id}}"><i class='fa fa-trash text-danger'></i></a></td>
+    
+    
+    @include('dash.loans.delete')
  
     </tr> 
    @endforeach
@@ -62,7 +68,7 @@
       
 
 <div class="modal fade " id="addmember" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-dialog modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">CREATE LOAN</h5>
@@ -86,7 +92,7 @@
     
                 @foreach ($users as $user)
                   
-                <option value="{{$user->id}}">{{$user->firtname}} {{$user->lastname}}</option>
+                <option value="{{$user->id}}">{{$user->firstname}} {{$user->middlename}} {{$user->lastname}}</option>
                
                  @endforeach
                  @endif
@@ -100,6 +106,21 @@
                 <label for="inputText" class="col-sm-2 col-form-label">Amount</label>
                 <div class="col-sm-10">
                     <input type="text"  class="form-control" id="inputText" name="amount" required>
+                </div>
+                </div>
+
+                <div class="mb-3 row">
+                <label for="inputText" class="col-sm-2 col-form-label">Rate</label>
+                <div class="col-sm-10">
+                  <select name="rate" id="" class="form-control">
+                  <option value="">--- Select Rate --</option>
+                  <option value="0.1">With interest 10%</option>
+                  <option value="0">Without interest 0%</option>
+                  
+                
+                    
+                  </select>
+                   
                 </div>
                 </div>
 
