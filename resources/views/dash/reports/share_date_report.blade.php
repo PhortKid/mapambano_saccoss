@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container printable-area">
-    <h1 class="my-4">Saving Report</h1>
+    <h1 class="my-4">Shares/Hisa Report</h1>
 
-    <form action="{{ route('report.date.savings') }}" method="GET">
+    <form action="{{ route('report.date.shares') }}" method="GET">
             @csrf
             <div class="row">
                 <div class="col-md-4">
@@ -40,9 +40,9 @@
 
             @foreach ($users as $index => $user)
                 @php
-                    // Assuming the 'saving' relationship has transactions with 'paid_in' and 'withdrawn' fields
-                    $paidIn = $user->savings->sum('paid_in');
-                    $withdrawn = $user->savings->sum('withdraw');
+                    // Assuming the 'share' relationship has transactions with 'paid_in' and 'withdrawn' fields
+                    $paidIn = $user->shares->sum('paid_in');
+                    $withdrawn = $user->shares->sum('withdraw');
                     $balance = $paidIn - $withdrawn;
 
                     // Accumulate totals
@@ -53,7 +53,7 @@
 
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}}</td>
+                    <td>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</td>
                     <td>{{ number_format($paidIn, 2) }}</td>
                     <td>{{ number_format($withdrawn, 2) }}</td>
                     <td>{{ number_format($balance, 2) }}</td>
@@ -67,7 +67,7 @@
                 <td><strong>{{ number_format($totalBalance, 2) }}</strong></td>
             </tr>
         </tbody>
-     
+      
     </table>
 
     <!-- Kitufe cha Chapisha Ripoti -->

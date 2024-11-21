@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="container ">
-    <h1 class="my-4">All Applicant Report</h1>
+    <h1 class="my-4">All Applicant Report </h1> <h4>Date:{{$startDate}} Up to {{$endDate}}</h4>
+
     <form action="{{ route('user.balance.date.report') }}" method="GET">
             @csrf
             <div class="row">
@@ -67,6 +68,8 @@
                     <td>{{ number_format($userLoanBalance, 2) }}</td>
                     <td>{{ number_format($totalBalance, 2) }}</td>
                 </tr>
+
+          
             @endforeach
             <tr>
                 <td ><strong>Total  </strong></td>
@@ -78,10 +81,15 @@
                 <td><strong>{{ number_format($grandTotalBalance, 2) }}</strong></td>
             </tr>
         </tbody>
-       
+        <?php  /*
+        <tfoot class="table-dark">
+           
+        </tfoot>
+
+        */ ?>
     </table>
 
     <!-- Kitufe cha Chapisha Ripoti -->
-    <button class="btn btn-success mt-3" onclick="window.print()">Chapisha Ripoti</button>
+    <button class="btn btn-success mt-3" onclick="window.print()">Print report</button>
 </div>
 @endsection

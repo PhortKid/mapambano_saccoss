@@ -75,9 +75,14 @@ Route::get('/users_report', [UsersReportController::class, 'index'])->name('user
 Route::get('/users_report/{id}/report', [UsersReportController::class, 'showUserReport'])->name('users.report');
 Route::get('/all_users_report', [UsersReportController::class, 'userLoanReport'])->name('all.users.report');
 Route::get('/users_balance_report', [UserBalanceReportController::class, 'index'])->name('user.balance.report');
+Route::get('/users_balance_date_report', [UserBalanceReportController::class, 'date'])->name('user.balance.date.report');
 Route::get('/reports_shares',[ReportsController::class,'shareReport'])->name('report.shares');
 Route::get('/savings_report', [ReportsController::class, 'savingsReport'])->name('report.savings');
 Route::get('/deposite_report', [ReportsController::class, 'depositReport'])->name('report.deposite');
+
+Route::get('/reports_date_shares',[ReportsController::class,'shareDateReport'])->name('report.date.shares');
+Route::get('/savings_date_report', [ReportsController::class, 'savingsDateReport'])->name('report.date.savings');
+Route::get('/deposite_date_report', [ReportsController::class, 'depositDateReport'])->name('report.date.deposite');
 });
 
 

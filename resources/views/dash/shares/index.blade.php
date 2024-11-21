@@ -16,7 +16,7 @@
   </div> 
 <div class="table-responsive">
 
-<table   class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+<table   class="table table-bordered" id="example" width="100%" cellspacing="0">
 
 <thead class="table-dark">
 <tr>

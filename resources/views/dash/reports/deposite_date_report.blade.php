@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container printable-area">
-    <h1 class="my-4">Saving Report</h1>
+    <h1 class="my-4">Deposit/Akiba Report</h1>
 
-    <form action="{{ route('report.date.savings') }}" method="GET">
+    <form action="{{ route('report.date.deposite') }}" method="GET">
             @csrf
             <div class="row">
                 <div class="col-md-4">
@@ -25,7 +25,7 @@
         <thead class="table-dark">
             <tr>
                 <th>#</th>
-                <th>Fullname</th>
+                <th>Jina la Mtumiaji</th>
                 <th>Paid In</th>
                 <th>Withdrawn</th>
                 <th>Balance</th>
@@ -40,9 +40,9 @@
 
             @foreach ($users as $index => $user)
                 @php
-                    // Assuming the 'saving' relationship has transactions with 'paid_in' and 'withdrawn' fields
-                    $paidIn = $user->savings->sum('paid_in');
-                    $withdrawn = $user->savings->sum('withdraw');
+                    // Assuming the 'deposit' relationship has transactions with 'paid_in' and 'withdrawn' fields
+                    $paidIn = $user->deposite->sum('paid_in');
+                    $withdrawn = $user->deposite->sum('withdraw');
                     $balance = $paidIn - $withdrawn;
 
                     // Accumulate totals
@@ -53,7 +53,7 @@
 
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}}</td>
+                    <td>{{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</td>
                     <td>{{ number_format($paidIn, 2) }}</td>
                     <td>{{ number_format($withdrawn, 2) }}</td>
                     <td>{{ number_format($balance, 2) }}</td>

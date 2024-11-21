@@ -35,6 +35,7 @@ class LoansController extends Controller
             ['applicant'=>['required'],
             'amount'=>['required'],
             'rate'=>['required'],
+            'date'=>['required'],
             ]
         );
     
@@ -44,14 +45,16 @@ class LoansController extends Controller
  
             $loan = Loans::create([
                 'user_id' => $request->applicant,
+                'date' => $request->date,
                 'amount' => $request->amount*$request->rate+$request->amount,
                 'balance' => $request->amount*$request->rate+$request->amount,
+                
             ]);
         
        
     
        // return response()->json(['message' => 'Mkopo umeundwa kwa mafanikio!', 'loan' => $loan]);
-        return redirect('/loans_management')->with('success','Mkopo umeundwa kwa mafanikio!');
+        return redirect('/loans_management')->with('success','Loan Added!');
     }
 
     /**

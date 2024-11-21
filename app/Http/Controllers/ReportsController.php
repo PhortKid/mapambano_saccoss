@@ -8,23 +8,76 @@ class ReportsController extends Controller
 {
     public function shareReport()
 {
-    // Fetch all users with their associated share transactions
-    $users = User::with('shares')->get();  // Assuming you have a share relationship on the User model
-    return view('dash.reports.share_report', compact('users'));
+    
+    $users = User::with('shares')->get();  
+    $title="All Shares Report Combined";
+    return view('dash.reports.share_report', compact('users','title'));
 }
 
 public function savingsReport()
 {
-    // Fetch all users with their associated saving transactions
-    $users = User::with('savings')->get();  // Assuming you have a saving relationship on the User model
-    return view('dash.reports.savings_report', compact('users'));
+   
+    $users = User::with('savings')->get(); 
+    $title="All Saving  Report Combined"; 
+    return view('dash.reports.savings_report', compact('users','title'));
 }
 
 public function depositReport()
 {
-    // Fetch all users with their associated deposit transactions
-    $users = User::with('deposite')->get();  // Assuming you have a deposit relationship on the User model
-    return view('dash.reports.deposite_report', compact('users'));
+   
+    $users = User::with('deposite')->get(); 
+    $title="All Deposit Report Combined";
+    return view('dash.reports.deposite_report', compact('users','title'));
+}
+
+
+public function shareDateReport(Request $request)
+{
+    $startDate = $request->input('start_date');
+    $endDate = $request->input('end_date');
+
+    // Fetch all users with their shares filtered by date range
+    $users = User::with(['shares' => function ($query) use ($startDate, $endDate) {
+        if ($startDate && $endDate) {
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+    }])->get();
+    $title="Shares Report from $startDate - $endDate";
+    return view('dash.reports.share_date_report', compact('users', 'startDate', 'endDate','title'));
+}
+
+
+public function savingsDateReport(Request $request)
+{
+    $startDate = $request->input('start_date');
+    $endDate = $request->input('end_date');
+
+    // Fetch all users with their savings filtered by date range
+    $users = User::with(['savings' => function ($query) use ($startDate, $endDate) {
+        if ($startDate && $endDate) {
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+    }])->get();
+    $title="Saving Report from $startDate - $endDate";
+    return view('dash.reports.savings_date_report', compact('users', 'startDate', 'endDate','title'));
+}
+
+
+
+public function depositDateReport(Request $request)
+{
+    $startDate = $request->input('start_date');
+    $endDate = $request->input('end_date');
+
+    // Fetch all users with their deposits filtered by date range
+    $users = User::with(['deposite' => function ($query) use ($startDate, $endDate) {
+        if ($startDate && $endDate) {
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+    }])->get();
+    $title="Deposit Report from $startDate - $endDate";
+
+    return view('dash.reports.deposite_date_report', compact('users', 'startDate', 'endDate','title'));
 }
 
 

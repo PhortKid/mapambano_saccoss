@@ -3,8 +3,24 @@
 @section('content')
 <div class="container printable-area">
     <h1 class="my-4">Shares/Hisa Report</h1>
-
-    <table class="table table-bordered">
+    <form action="{{ route('report.date.shares') }}" method="GET">
+            @csrf
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="start_date" class="form-label">Start Date:</label>
+                    <input type="date" name="start_date" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="end_date" class="form-label">End Date:</label>
+                    <input type="date" name="end_date" class="form-control" required>
+                </div>
+                <div class="col-md-4 pt-4">
+                    <button type="submit" class="btn btn-primary">Filter by Date</button>
+                </div>
+            </div>
+        </form>
+        <br>
+    <table class="table table-bordered" id="example">
         <thead class="table-dark">
             <tr>
                 <th>#</th>
@@ -42,15 +58,15 @@
                     <td>{{ number_format($balance, 2) }}</td>
                 </tr>
             @endforeach
-        </tbody>
-        <tfoot class="table-dark">
             <tr>
-                <td colspan="2"><strong>Total</strong></td>
+                <td><strong>Total</strong></td>
+                <td><strong>Total</strong></td>
                 <td><strong>{{ number_format($totalPaidIn, 2) }}</strong></td>
                 <td><strong>{{ number_format($totalWithdrawn, 2) }}</strong></td>
                 <td><strong>{{ number_format($totalBalance, 2) }}</strong></td>
             </tr>
-        </tfoot>
+        </tbody>
+       
     </table>
 
     <!-- Kitufe cha Chapisha Ripoti -->

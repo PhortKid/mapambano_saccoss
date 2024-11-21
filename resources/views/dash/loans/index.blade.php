@@ -124,6 +124,14 @@
                 </div>
                 </div>
 
+
+                <div class="mb-3 row">
+                <label for="inputText" class="col-sm-2 col-form-label">DATE</label>
+                <div class="col-sm-10">
+                    <input type="date"  class="form-control" id="inputText" name="date" >
+                </div>
+                </div>
+
             </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

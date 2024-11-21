@@ -60,14 +60,14 @@
                 </tr>
             @endforeach
             <tr>
-                <td><strong>Total</strong></td>
-                <td><strong>Total</strong></td>
+                <td ><strong>Total</strong></td>
+                <td ><strong>Total</strong></td>
                 <td><strong>{{ number_format($totalPaidIn, 2) }}</strong></td>
                 <td><strong>{{ number_format($totalWithdrawn, 2) }}</strong></td>
                 <td><strong>{{ number_format($totalBalance, 2) }}</strong></td>
             </tr>
         </tbody>
-     
+        
     </table>
 
     <!-- Kitufe cha Chapisha Ripoti -->
