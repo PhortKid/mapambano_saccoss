@@ -34,7 +34,7 @@ class LoansController extends Controller
         $data =$request->validate(
             ['applicant'=>['required'],
             'amount'=>['required'],
-            'rate'=>['required'],
+           // 'rate'=>['required'],
             'date'=>['required'],
             ]
         );

@@ -14,6 +14,9 @@ use App\Http\Controllers\UsersReportController;
 use App\Http\Controllers\UserBalanceReportController;
 use App\Http\Controllers\ReportsController;
 
+use App\Http\Controllers\RepaidInterestManagement;
+
+
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\InterestController;
 
@@ -26,6 +29,8 @@ Route::middleware('auth')->group(function () {
 
 
 use App\Models\Loans;
+
+use App\Models\Interest;
 
 use Illuminate\Http\Request;
 
@@ -50,7 +55,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return redirect('/dash');
-    });
+    })->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -68,6 +73,8 @@ Route::resource('/deposites_management',DepositeController::class);
 Route::resource('/loans_management',LoansController::class);
 Route::resource('/expenses_management',ExpenseController::class);
 Route::resource('/interest_management',InterestController::class);
+
+Route::resource('/repaid_interest_management',RepaidInterestManagement::class);
 
 
 });
@@ -197,6 +204,40 @@ Route::get('/all_applicant_loan_report/{user_id}', function($user_id) {
     $loans = $user ? $user->loans : [];
     return view('dash.loans.applicant_loan_report')->with('loans', $loans);
 });
+
+
+
+
+
+
+//INTEREST CONTROLLER
+
+Route::get('/all_applicant_interest', function() {
+    $users=User::all();
+     return view('dash.interest.applicant')->with('users', $users);
+ })->name('all.applicant.interest');
+ /*
+ Route::get('/all_applicant_interest/{user_id}', function($user_id) {
+   
+    $user=User::all();
+     $interests = $user ? $user->interests : [];
+     return view('dash.interest.applicant_interest')->with('interests', $interests);
+ });
+ 
+*/
+ Route::get('/all_applicant_interest/{user_id}', function($user_id) {
+    $user = User::find($user_id); // Use find to get a specific user by ID
+    $interests = $user ? $user->interest : []; // Now you can access the 'interests' relationship on the individual user
+    return view('dash.interest.applicant_interest')->with('interests', $interests);
+});
+
+ Route::get('/all_applicant_interest_report/{user_id}', function($user_id) {
+    $user = User::find($user_id);
+     $interests = $user ? $user->interest : [];
+     return view('dash.interest.applicant_interest_report')->with('interests', $interests);
+ });
+ //END INTEREST CONTROLLER
+ 
 
 require __DIR__.'/auth.php';
 

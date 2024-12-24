@@ -35,7 +35,7 @@ class InterestController extends Controller
             [
             'user_id'=>['nullable'],
             'tobe_paid'=>['required'],
-            'paid'=>['nullable'],
+          //  'paid'=>['nullable'],
             'date'=>['required'],
 
             ]
@@ -47,7 +47,7 @@ class InterestController extends Controller
         $interest->user_id=$request->input('applicant');
         $interest->tobe_paid=$request->input('tobe_paid');
         $interest->date=$request->input('date');
-        $interest->paid=$request->input('paid');
+        $interest->paid=0;
         $interest->save();
         return redirect('/interest_management')->with('success','Interest Created');
     }

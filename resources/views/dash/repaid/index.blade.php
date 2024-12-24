@@ -14,7 +14,7 @@
    <div class="row">
   
    
-    <div class="col-8 col-sm-10"></div> <div class="col-4 col-sm-2"> <div class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#addmember">LIPA MKOPO</div></div>
+    <div class="col-8 col-sm-10"></div> <div class="col-4 col-sm-2"> <div class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#addmember">Pay Loan</div></div>
   </div> 
 <div class="table-responsive">
 

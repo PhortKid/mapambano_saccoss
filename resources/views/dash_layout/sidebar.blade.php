@@ -145,7 +145,9 @@
     <div id="collapseTwo20" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Manage:</h6>
-            <a class="collapse-item" href="{{route('interest_management.index')}}">All </a>
+            <a class="collapse-item" href="{{route('interest_management.index')}}">Manage Interest</a>
+            <a class="collapse-item" href="{{route('repaid_interest_management.index')}}">Pay Interest</a>
+            <a class="collapse-item" href="{{route('all.applicant.interest')}}">View Applicant Interest</a>
            
             
         </div>

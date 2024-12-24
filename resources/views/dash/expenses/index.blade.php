@@ -33,6 +33,8 @@
 <th>Description</th>
 <th>Debit</th>
 <th>credit</th>
+<th>DB</th>
+<th>CR</th>
 <th>Balance</th>
 <th>Date</th>
 <th>Edit</th>
@@ -54,7 +56,12 @@
     
     <td>{{  number_format($expense->debit,2)}}</td>
     <td> {{  number_format($expense->credit,2)}}</td>
+    
+    <td>{{  number_format($expense->debit+$expense->debit,2)}}</td>
+    <td> {{  number_format($expense->credit+$expense->credit,2)}}</td>
+    
     <td>{{  number_format($expense->balance,2)}}</td>
+   
     <td>{{  $expense->date}}</td>
     <!--<td><a href='#' data-bs-toggle='modal' data-id=''  data-bs-target='#pop' class='showdata' value='' name='data'><i class='fa fa-edit'></i></a></td>-->
     <td><a href="#"  data-bs-toggle="modal" data-bs-target="#EditExpense{{$expense->id}}"><i class='fa fa-edit'></i></a></td>

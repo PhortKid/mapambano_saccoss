@@ -12,7 +12,7 @@
     
 <!-- DATA TABLE -->     
    <div class="row">
-    <div class="col-8 col-sm-10"></div> <div class="col-4 col-sm-2"> <div class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#addmember">Interest</div></div>
+    <div class="col-8 col-sm-10"></div> <div class="col-4 col-sm-2"> <div class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#addmember">ADD INTEREST</div></div>
   </div> 
 <div class="table-responsive">
 
@@ -71,7 +71,7 @@
     <div class="modal-dialog modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">CREATE INTEREST</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">ADD INTEREST</h5>
           <button type="button" class="battan-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
         </div>
         
@@ -104,19 +104,21 @@
 
 
                 <div class="mb-3 row">
-                <label for="inputText" class="col-sm-2 col-form-label">Tobe Paid</label>
+                <label for="inputText" class="col-sm-2 col-form-label">Amount</label>
                 <div class="col-sm-10">
                     <input type="text"  class="form-control" id="inputText" name="tobe_paid" required>
                 </div>
                 </div>
      @csrf
+
+     <!--
                 <div class="mb-3 row">
                 <label for="inputText" class="col-sm-2 col-form-label">PAID</label>
                 <div class="col-sm-10">
                     <input type="text"  class="form-control" id="inputText" name="paid" required>
                 </div>
                 </div>
-
+    -->
                 <div class="mb-3 row">
                 <label for="inputText" class="col-sm-2 col-form-label">DATE</label>
                 <div class="col-sm-10">
