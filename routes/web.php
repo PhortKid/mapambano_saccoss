@@ -14,6 +14,10 @@ use App\Http\Controllers\UsersReportController;
 use App\Http\Controllers\UserBalanceReportController;
 use App\Http\Controllers\ReportsController;
 
+use App\Http\Controllers\BalanceController;//leo
+
+
+
 use App\Http\Controllers\RepaidInterestManagement;
 
 
@@ -307,3 +311,12 @@ function (Request $request)
 Route::get('cheki_mkopo',function(){
     return view('cheki_mkopo')->with('loanId',1);
 });
+
+
+
+
+
+
+Route::resource('/balances',BalanceController::class);
+Route::get('/balances_report', [BalanceController::class, 'report'])->name('balances.report');
+Route::post('/balances_report', [BalanceController::class, 'generateReport'])->name('balances.generateReport');
