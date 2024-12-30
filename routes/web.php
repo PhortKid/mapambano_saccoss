@@ -107,7 +107,9 @@ Route::get('/deposite_date_report', [ReportsController::class, 'depositDateRepor
 use  App\Models\User;
 
         
-       
+Route::middleware('auth')->group(function () {
+    
+    
 Route::get('/all_applicant_share', function() {
     $users = User::where('role', 'applicant')->get(); 
   
@@ -130,7 +132,7 @@ Route::get('/all_applicant_share_report/{user_id}', function($user_id) {
 
 
 
-
+});//end auth
 
 
 
