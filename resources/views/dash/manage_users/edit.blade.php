@@ -51,9 +51,9 @@
           <select name="role" class="form-control">
             <option selected="true">{{$user->role}}</option>
             <option value="Admin">Admin</option>
-            <option value="Accountant">Accountant</option>
-            <option value="Manager">Manager</option>
-            <option value="Staff">Staff</option>
+            <option value="secretary">Secretary</option>
+            <option value="chair_man">Chair man</option> 
+            <option value="Applicant">Applicant</option>
           </select>
         </div>
 

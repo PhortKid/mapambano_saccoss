@@ -90,9 +90,13 @@ Route::get('/users_report/{id}/report', [UsersReportController::class, 'showUser
 Route::get('/all_users_report', [UsersReportController::class, 'userLoanReport'])->name('all.users.report');
 Route::get('/users_balance_report', [UserBalanceReportController::class, 'index'])->name('user.balance.report');
 Route::get('/users_balance_date_report', [UserBalanceReportController::class, 'date'])->name('user.balance.date.report');
+
+
+//reports
 Route::get('/reports_shares',[ReportsController::class,'shareReport'])->name('report.shares');
 Route::get('/savings_report', [ReportsController::class, 'savingsReport'])->name('report.savings');
 Route::get('/deposite_report', [ReportsController::class, 'depositReport'])->name('report.deposite');
+
 
 Route::get('/reports_date_shares',[ReportsController::class,'shareDateReport'])->name('report.date.shares');
 Route::get('/savings_date_report', [ReportsController::class, 'savingsDateReport'])->name('report.date.savings');
@@ -149,15 +153,15 @@ Route::get('/all_applicant_saving', function() {
 })->name('all.applicant.saving');
 
 Route::get('/all_applicant_saving/{user_id}', function($user_id) {
-   // $user = User::where('role', 'admin')->where('id', $user_id)->first();
-   $user=User::all();
+    $user = User::where('role', 'Applicant')->where('id', $user_id)->first();
+   //$user=User::all();
     $savings = $user ? $user->savings : [];
     return view('dash.savings.applicant_saving')->with('savings', $savings);
 });
 
 Route::get('/all_applicant_saving_report/{user_id}', function($user_id) {
-   // $user = User::where('role', 'applicant')->where('id', $user_id)->first();
-   $user=User::all();
+    $user = User::where('role', 'Applicant')->where('id', $user_id)->first();
+ //  $user=User::all();
     $savings = $user ? $user->savings : [];
     return view('dash.savings.applicant_saving_report')->with('savings', $savings);
 });

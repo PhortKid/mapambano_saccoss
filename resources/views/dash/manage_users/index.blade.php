@@ -134,6 +134,7 @@
                      <option value="Admin">Admin</option>
                      <option value="secretary">Secretary</option>
                      <option value="chair_man">Chair man</option> 
+                     <option value="Applicant">Applicant</option>
                  </select>
                  </div>
                 </div>

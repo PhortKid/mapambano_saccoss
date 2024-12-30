@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2024 at 05:38 PM
+-- Generation Time: Dec 30, 2024 at 10:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `saccos`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `balances`
+--
+
+CREATE TABLE `balances` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `opening_debit` decimal(15,2) NOT NULL DEFAULT 0.00,
+  `opening_credit` decimal(15,2) NOT NULL DEFAULT 0.00,
+  `monthly_debit` decimal(15,2) NOT NULL DEFAULT 0.00,
+  `monthly_credit` decimal(15,2) NOT NULL DEFAULT 0.00,
+  `total_debit` decimal(15,2) NOT NULL DEFAULT 0.00,
+  `total_credit` decimal(15,2) NOT NULL DEFAULT 0.00,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `balances`
+--
+
+INSERT INTO `balances` (`id`, `title`, `opening_debit`, `opening_credit`, `monthly_debit`, `monthly_credit`, `total_debit`, `total_credit`, `created_at`, `updated_at`) VALUES
+(3, 'no matter what', 6000.00, 7000.00, 900000.00, 8000000.00, 906000.00, 8007000.00, '2024-12-27 17:21:53', '2024-12-27 18:22:59');
 
 -- --------------------------------------------------------
 
@@ -226,7 +252,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2024_11_18_193450_create_loans_table', 6),
 (13, '2024_11_18_193553_create_transactions_table', 6),
 (16, '2024_11_20_172040_create_expense_table', 7),
-(18, '2024_11_21_191941_create_interest_table', 8);
+(18, '2024_11_21_191941_create_interest_table', 8),
+(19, '2024_12_27_090411_create_balances_table', 9);
 
 -- --------------------------------------------------------
 
@@ -287,9 +314,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('JCtrJkqyLkWk2204mcYL1uBy3Wz8H6F754VbyXUm', 5, '192.168.231.217', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQ3A1STVXaTFTeUxSRDBodTZtS2REOEs2WlV2NVNOcmZ0NnJPUTIxQyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NzI6Imh0dHA6Ly8xOTIuMTY4LjIzMS4xMDMvbWFwYW1iYW5vX3NhY2Nvc3MtbWFpbi9wdWJsaWMvZXhwZW5zZXNfbWFuYWdlbWVudCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjU7fQ==', 1733167262),
-('k7MfIRHX8TJZpsfvoiMztn8ZNYo0ZTD3PiKkfXKA', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTXRjZk5LUUhQekZ0bEpjVTd3S0E0eURQT2FON2dTYUFrTVlPQ1NsVCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9leHBlbnNlc19tYW5hZ2VtZW50Ijt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDt9', 1733167320),
-('t0RbdrX4pHZPmTXgbrSYyGeZ9rUj27AhsrwSOa9U', 4, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiNHN5UHZ0MmNoQ29PUVZidGxHMk5iWXB1RlpQSEVRcjFXZWczaEQzUSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Njg6Imh0dHA6Ly9sb2NhbGhvc3QvbWFwYW1iYW5vX3NhY2Nvc3MtbWFpbi9wdWJsaWMvdXNlcnNfcmVwb3J0LzUvcmVwb3J0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDt9', 1733165899);
+('EV4aKjO8X0yuLC7kh7VhAOaux4F4SwoCl3q7nQni', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidGRMRkNTdDh0MXM0TXdCMVJxRHV5dkM3ZEZTWGo3SU1rUDE0QnRCYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1735548422),
+('Q0XpGOCC5Ri9IT4EOXmnLazcT6dFVYjWC9WbGBLJ', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiR0VLQ01hNTVic2NPYllRdUxrZ3lPQkdNUnJBM3pZOUpMR3FGeXJNdiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2Fuc19tYW5hZ2VtZW50Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDt9', 1735552626);
 
 -- --------------------------------------------------------
 
@@ -371,13 +397,19 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `firstname`, `middlename`, `lastname`, `phone_number`, `role`, `gender`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, 'mary', 'ni', 'sanga', '0787753939', 'applicant', 'male', 'kesayir688@nastyx.com', NULL, '$2y$12$i2PYnMHwsrZyGVnMEwp0seWTc8/vZ1WT.XYoaZ/9TAwUGGjMhq2Ca', NULL, '2024-11-10 09:43:02', '2024-11-10 09:43:02'),
 (3, 'SKOLASTIKA', 'SKOLASTIKA', 'SKOLASTIKA', '0787753938', 'applicant', 'male', 'skolastica@gmail.com', NULL, '$2y$12$KcGph6exfDEJmTmsnCitY.NzgagVYf.MVyyhJl/ok/Y/gINLPM4v6', NULL, '2024-11-12 02:31:52', '2024-11-12 02:31:52'),
-(4, 'phort', 'chrispin', 'rwekiti', '0787753939', 'Admin', 'male', 'middlephort@gmail.com', NULL, '$2y$12$aB0dyyacMA8VpnFwFeBUQuKr72jj3JT6A25Epn3Z3GQoqGqrXHnC.', NULL, '2024-11-20 04:35:52', '2024-11-20 19:49:57'),
-(5, 'Patrick', 'Anchen', 'Mwekibindu', '0758013192', 'Staff', 'male', 'patrickmwekibindu@gmail.com', NULL, '$2y$12$7zj22GoaEdvkmGuF7Yt4wOnIfzWprhNZYRO4/QPh1evSbVZpScX7i', 'iP6G7Uk5VL2MYFVGceNLTHGvnNEV94H10pG5xbSAX7N9qrWjsCyBbS724woS', '2024-11-18 23:16:48', '2024-11-19 23:56:25'),
+(4, 'phort', 'chrispin', 'rwekiti', '0787753939', 'ApplicantT', 'male', 'middlephort@gmail.com', NULL, '$2y$12$aB0dyyacMA8VpnFwFeBUQuKr72jj3JT6A25Epn3Z3GQoqGqrXHnC.', NULL, '2024-11-20 04:35:52', '2024-12-30 17:26:25'),
+(5, 'Patrick', 'Anchen', 'Mwekibindu', '0758013192', 'Applicant', 'male', 'patrickmwekibindu@gmail.com', NULL, '$2y$12$7zj22GoaEdvkmGuF7Yt4wOnIfzWprhNZYRO4/QPh1evSbVZpScX7i', 'iP6G7Uk5VL2MYFVGceNLTHGvnNEV94H10pG5xbSAX7N9qrWjsCyBbS724woS', '2024-11-18 23:16:48', '2024-11-19 23:56:25'),
 (6, 'Paulo', 'Anchen', 'Melikiori', '0754744231', 'secretary', 'male', 'pauloanchen@gmail.com', NULL, '$2y$12$bA.57LBizsI0vRxq/CZA/OQO7yb3cyMtb5sbRFsDitVVBjxyXJoJW', NULL, '2024-12-03 01:19:46', '2024-12-03 01:21:12');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `balances`
+--
+ALTER TABLE `balances`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `cache`
@@ -491,6 +523,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `balances`
+--
+ALTER TABLE `balances`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `deposite`
 --
 ALTER TABLE `deposite`
@@ -530,7 +568,7 @@ ALTER TABLE `loans`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `savings`

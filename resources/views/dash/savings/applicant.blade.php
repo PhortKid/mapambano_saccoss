@@ -43,7 +43,7 @@
     <td>{{$user->phone_number}}</td>
     <td>{{$user->created_at}}</td>
    
-    <td>
+    <td><!-- marekebisho -->
       <a href="{{ url('/all_applicant_saving/' . $user->id) }}"  ><i class='fa fa-eye'></i></a> | 
       <a href="{{ url('/all_applicant_saving_report/' . $user->id) }}"  ><i class='fa fa-chart-line'></i></a>
   </td>
