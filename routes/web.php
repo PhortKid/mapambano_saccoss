@@ -322,7 +322,8 @@ Route::get('cheki_mkopo',function(){
 
 
 
-
+Route::middleware('auth')->group(function () {
 Route::resource('/balances',BalanceController::class);
 Route::get('/balances_report', [BalanceController::class, 'report'])->name('balances.report');
 Route::post('/balances_report', [BalanceController::class, 'generateReport'])->name('balances.generateReport');
+});

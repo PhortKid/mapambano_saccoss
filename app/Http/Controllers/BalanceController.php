@@ -28,6 +28,8 @@ class BalanceController extends Controller
             'opening_credit' => 'numeric',
             'monthly_debit' => 'numeric',
             'monthly_credit' => 'numeric',
+            'jonal_debit' => 'numeric',
+            'jonal_credit' => 'numeric',
         ]);
 
         $balance = new Balance($request->all());
@@ -35,6 +37,7 @@ class BalanceController extends Controller
         $balance->save();
 
         return redirect()->route('balances.index')->with('success', 'Balance created successfully.');
+        
     }
 
     // Show a single balance
@@ -58,6 +61,8 @@ class BalanceController extends Controller
             'opening_credit' => 'numeric',
             'monthly_debit' => 'numeric',
             'monthly_credit' => 'numeric',
+            'jonal_debit' => 'numeric',
+            'jonal_credit' => 'numeric',
         ]);
 
         $balance->fill($request->all());
@@ -99,6 +104,8 @@ public function generateReport(Request $request)
         'opening_credit' => $balances->sum('opening_credit'),
         'monthly_debit' => $balances->sum('monthly_debit'),
         'monthly_credit' => $balances->sum('monthly_credit'),
+        'jonal_debit' => $balances->sum('jonal_debit'),
+        'jonal_credit' => $balances->sum('jonal_credit'),
         'total_debit' => $balances->sum('total_debit'),
         'total_credit' => $balances->sum('total_credit'),
     ];

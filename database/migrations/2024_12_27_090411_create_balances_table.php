@@ -18,6 +18,8 @@ return new class extends Migration
             $table->decimal('opening_credit', 15, 2)->default(0); // Credit ya Salio Anzia
             $table->decimal('monthly_debit', 15, 2)->default(0); // Debit ya Urari wa Mwezi
             $table->decimal('monthly_credit', 15, 2)->default(0); // Credit ya Urari wa Mwezi
+            $table->decimal('jonal_debit', 15, 2)->default(0); //  Debit
+            $table->decimal('jonal_credit', 15, 2)->default(0); //  jonal
             $table->decimal('total_debit', 15, 2)->default(0); // Jumla ya Debit
             $table->decimal('total_credit', 15, 2)->default(0); // Jumla ya Credit
             $table->timestamps();

@@ -31,7 +31,7 @@
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
-
+@if(Auth::user()->role !="Applicant")
 <!-- Users -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -174,7 +174,7 @@
     </div>
 </li>
 
-
+@endif
 <!-- Report -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo10"
