@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2024 at 10:57 AM
+-- Generation Time: Jan 03, 2025 at 04:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,6 +34,8 @@ CREATE TABLE `balances` (
   `opening_credit` decimal(15,2) NOT NULL DEFAULT 0.00,
   `monthly_debit` decimal(15,2) NOT NULL DEFAULT 0.00,
   `monthly_credit` decimal(15,2) NOT NULL DEFAULT 0.00,
+  `jonal_debit` decimal(15,2) NOT NULL DEFAULT 0.00,
+  `jonal_credit` decimal(15,2) NOT NULL DEFAULT 0.00,
   `total_debit` decimal(15,2) NOT NULL DEFAULT 0.00,
   `total_credit` decimal(15,2) NOT NULL DEFAULT 0.00,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -44,8 +46,8 @@ CREATE TABLE `balances` (
 -- Dumping data for table `balances`
 --
 
-INSERT INTO `balances` (`id`, `title`, `opening_debit`, `opening_credit`, `monthly_debit`, `monthly_credit`, `total_debit`, `total_credit`, `created_at`, `updated_at`) VALUES
-(3, 'no matter what', 6000.00, 7000.00, 900000.00, 8000000.00, 906000.00, 8007000.00, '2024-12-27 17:21:53', '2024-12-27 18:22:59');
+INSERT INTO `balances` (`id`, `title`, `opening_debit`, `opening_credit`, `monthly_debit`, `monthly_credit`, `jonal_debit`, `jonal_credit`, `total_debit`, `total_credit`, `created_at`, `updated_at`) VALUES
+(2, 'FEDHA TASLIMU', 500.00, 700.00, 500.00, 700.00, 500.00, 700.00, 1500.00, 2100.00, '2024-12-30 23:55:31', '2024-12-30 23:55:31');
 
 -- --------------------------------------------------------
 
@@ -253,7 +255,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2024_11_18_193553_create_transactions_table', 6),
 (16, '2024_11_20_172040_create_expense_table', 7),
 (18, '2024_11_21_191941_create_interest_table', 8),
-(19, '2024_12_27_090411_create_balances_table', 9);
+(20, '2024_12_27_090411_create_balances_table', 9);
 
 -- --------------------------------------------------------
 
@@ -314,8 +316,13 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('2z78Tin4XjE3TzofH1yklMulVZYfAvjNMRaIdEPH', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiMTZOd3RxbDdaOU94cjRPcE9ybmRkZHk2WE82T1NSZ1NoSlB6amUzYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDt9', 1735903686),
 ('EV4aKjO8X0yuLC7kh7VhAOaux4F4SwoCl3q7nQni', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidGRMRkNTdDh0MXM0TXdCMVJxRHV5dkM3ZEZTWGo3SU1rUDE0QnRCYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1735548422),
-('Q0XpGOCC5Ri9IT4EOXmnLazcT6dFVYjWC9WbGBLJ', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiR0VLQ01hNTVic2NPYllRdUxrZ3lPQkdNUnJBM3pZOUpMR3FGeXJNdiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2Fuc19tYW5hZ2VtZW50Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDt9', 1735552626);
+('G7KnDWgofyliBEyM0I9pBYJdWWE75oFyWGvkjnWp', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiVzk3ajF2ZkF0WURCWldFRXo3eFFEVXFXdmRqV0xHZHdjV0wzYVdtcCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9iYWxhbmNlc19yZXBvcnQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YTowOnt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDt9', 1735745870),
+('KTXKB3Zkx7zYSoNY7hwE8DuzDlKbe7yj7tdgtS67', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiS2pJdWk2YU1jaEtZcWhqVHNTVEkzRHBjWXdBSjN6SUxrY21IMkdXaCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9iYWxhbmNlc19yZXBvcnQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo0O30=', 1735575079),
+('m43wKtZR5ZJUnoMrHXonTosDQ51wJnc4kgK4g78T', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiekI1azJHeFNINzI4aDBvZ1lPZ1BlOWVzZFQ1ZVhVS0lOTHpGQmxkNiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9iYWxhbmNlcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjQ7fQ==', 1735734775),
+('Q0XpGOCC5Ri9IT4EOXmnLazcT6dFVYjWC9WbGBLJ', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiR0VLQ01hNTVic2NPYllRdUxrZ3lPQkdNUnJBM3pZOUpMR3FGeXJNdiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2Fuc19tYW5hZ2VtZW50Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDt9', 1735552626),
+('ugHko75IOfhpziHUx9Dn8LpnDekrW3lrfTEFKWIA', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiUXBicTBnd2tHN2cxTm5UMTlWQmR5eWpTYjRBSFlhV3RWaExOMnVpTyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2Vyc19iYWxhbmNlX3JlcG9ydCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo0O30=', 1735564235);
 
 -- --------------------------------------------------------
 
@@ -397,7 +404,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `firstname`, `middlename`, `lastname`, `phone_number`, `role`, `gender`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, 'mary', 'ni', 'sanga', '0787753939', 'applicant', 'male', 'kesayir688@nastyx.com', NULL, '$2y$12$i2PYnMHwsrZyGVnMEwp0seWTc8/vZ1WT.XYoaZ/9TAwUGGjMhq2Ca', NULL, '2024-11-10 09:43:02', '2024-11-10 09:43:02'),
 (3, 'SKOLASTIKA', 'SKOLASTIKA', 'SKOLASTIKA', '0787753938', 'applicant', 'male', 'skolastica@gmail.com', NULL, '$2y$12$KcGph6exfDEJmTmsnCitY.NzgagVYf.MVyyhJl/ok/Y/gINLPM4v6', NULL, '2024-11-12 02:31:52', '2024-11-12 02:31:52'),
-(4, 'phort', 'chrispin', 'rwekiti', '0787753939', 'ApplicantT', 'male', 'middlephort@gmail.com', NULL, '$2y$12$aB0dyyacMA8VpnFwFeBUQuKr72jj3JT6A25Epn3Z3GQoqGqrXHnC.', NULL, '2024-11-20 04:35:52', '2024-12-30 17:26:25'),
+(4, 'phort', 'chrispin', 'rwekiti', '0787753939', 'Applicantt', 'male', 'middlephort@gmail.com', NULL, '$2y$12$aB0dyyacMA8VpnFwFeBUQuKr72jj3JT6A25Epn3Z3GQoqGqrXHnC.', NULL, '2024-11-20 04:35:52', '2024-12-30 17:26:25'),
 (5, 'Patrick', 'Anchen', 'Mwekibindu', '0758013192', 'Applicant', 'male', 'patrickmwekibindu@gmail.com', NULL, '$2y$12$7zj22GoaEdvkmGuF7Yt4wOnIfzWprhNZYRO4/QPh1evSbVZpScX7i', 'iP6G7Uk5VL2MYFVGceNLTHGvnNEV94H10pG5xbSAX7N9qrWjsCyBbS724woS', '2024-11-18 23:16:48', '2024-11-19 23:56:25'),
 (6, 'Paulo', 'Anchen', 'Melikiori', '0754744231', 'secretary', 'male', 'pauloanchen@gmail.com', NULL, '$2y$12$bA.57LBizsI0vRxq/CZA/OQO7yb3cyMtb5sbRFsDitVVBjxyXJoJW', NULL, '2024-12-03 01:19:46', '2024-12-03 01:21:12');
 
@@ -526,7 +533,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `balances`
 --
 ALTER TABLE `balances`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `deposite`
@@ -568,7 +575,7 @@ ALTER TABLE `loans`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `savings`
