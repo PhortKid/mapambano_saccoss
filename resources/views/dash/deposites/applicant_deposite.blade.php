@@ -25,8 +25,8 @@
 <th>Withdraw</th>
 <th>Balance</th>
 <th>Date</th>
-<th>Edit</th>
-<th>Delete</th>
+<!--<th>Edit</th>
+<th>Delete</th> -->
 
 </tr>
 </thead>
@@ -47,9 +47,9 @@
     <td>{{$deposite->balance}}</td>
     <td>{{$deposite->created_at}}</td>
     <!--<td><a href='#' data-bs-toggle='modal' data-id=''  data-bs-target='#pop' class='showdata' value='' name='data'><i class='fa fa-edit'></i></a></td>-->
-    <td><a href="#"  data-bs-toggle="modal" data-bs-target="#Editdeposite{{$deposite->id}}"><i class='fa fa-edit'></i></a></td>
+    <!--<td><a href="#"  data-bs-toggle="modal" data-bs-target="#Editdeposite{{$deposite->id}}"><i class='fa fa-edit'></i></a></td>
     <td><a href='#'  data-bs-toggle="modal" data-bs-target="#Deletedeposite{{$deposite->id}}"><i class='fa fa-trash'></i></a></td>
-    
+-->
     @include('dash.deposites.edit')
     @include('dash.deposites.delete')
     </tr> 
