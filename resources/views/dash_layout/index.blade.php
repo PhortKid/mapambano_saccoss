@@ -9,9 +9,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
   @if(isset($title))
-       <title>{{$title}}</title>
+       <title>
+        @if(isset($is_report_balance))
+        Report for {{ \Carbon\Carbon::parse($month)->format('F Y') }}
+        @else
+        {{$title}}
+        @endif
+    </title>
   @else
-    <title>Saccoss - Dashboard</title>
+    <title>
+    @if(isset($is_report_balance))
+        Report for {{ \Carbon\Carbon::parse($month)->format('F Y') }}
+        @else
+        Saccoss - Dashboard
+        @endif
+        </title>
 
 @endif
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -29,10 +41,20 @@
 <link rel="stylesheet" href="{{asset('datatables/dataTables.bootstrap4.min.css')}}">
 	<link rel="stylesheet" href="{{asset('datatables/buttons.bootstrap4.min.css')}}">
 	<link rel="stylesheet" href="{{asset('datatables/responsive.bootstrap4.min.css')}}">
+    
+
+<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.2.0/css/buttons.dataTables.css">
 
     <!-- Custom styles for this template-->
     <link href="{{asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
 <style>
+
+
+
+
+
+
     @media print {
     table {
         width: 100%;
@@ -238,8 +260,9 @@
      
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-
+    <?php /*
 <script src="{{asset('datatables/jquery-3.3.1.js')}}"></script>
+
     <script src="{{asset('datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('datatables/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('datatables/dataTables.buttons.min.js')}}"></script>
@@ -256,12 +279,31 @@
 	$(document).ready(function() {
 	    var table = $('#example').DataTable( {
 	        lengthChange: false,
-	        buttons: [ 'copy', 'excel', 'csv', 'pdf', 'colvis' ]
+	        buttons: [ 'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5' ]
 	    } );
 	 
 	    table.buttons().container()
 	        .appendTo( '#example_wrapper .col-md-6:eq(0)' );
 	} );
+     </script>
+*/  ?>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.2.0/js/dataTables.buttons.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.dataTables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.html5.min.js"></script>
+     <script>
+        new DataTable('#urari', {
+    layout: {
+        topStart: {
+            buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5']
+        }
+    }
+});
      </script>
 </body>
 

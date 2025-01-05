@@ -7,16 +7,38 @@ use App\Models\Balance;
 class BalanceController extends Controller
 {
     // Display a list of balances
-    public function index()
-    {
-        $balances = Balance::all();
-        return view('dash.balances.index', compact('balances'));
+    public function index(Request $request)
+    {   
+        $query = Balance::query();
+
+    // Check if 'month' is filled and filter by month
+    if ($request->filled('month')) {
+        $query->whereMonth('created_at', '=', date('m', strtotime($request->month)))
+              ->whereYear('created_at', '=', date('Y', strtotime($request->month)));
+    }
+
+    // Check if 'date' is filled and filter by date
+    if ($request->filled('date')) {
+        $query->whereDate('created_at', '=', $request->date);
+    }
+
+    // Get all records or filtered records, paginated
+    $balances = $query->paginate(10);
+
+    return view('dash.balances.index', compact('balances'));
     }
 
     // Show form to create a new balance
-    public function create()
+    public function create(Request $request)
     {
-        return view('dash.balances.create');
+        $lastmonth_title=$request->maelezo;
+        $lastmonth_credit=$request->total_credit;
+        $lastmonth_debit=$request->total_debit;
+        return view('dash.balances.create',[
+            'lastmonth_title'=>$lastmonth_title,
+            'lastmonth_credit'=>$lastmonth_credit,
+            'lastmonth_debit'=>$lastmonth_debit,
+        ]);
     }
 
     // Store a new balance
@@ -30,6 +52,7 @@ class BalanceController extends Controller
             'monthly_credit' => 'numeric',
             'jonal_debit' => 'numeric',
             'jonal_credit' => 'numeric',
+            'date' => 'required',
         ]);
 
         $balance = new Balance($request->all());
@@ -89,13 +112,14 @@ class BalanceController extends Controller
 
 public function generateReport(Request $request)
 {
+    $is_report_balance=8;
     $request->validate([
         'month' => 'required|date_format:Y-m', // Format ya mwaka-mwezi
     ]);
 
     $month = $request->input('month');
-    $balances = Balance::whereMonth('created_at', '=', date('m', strtotime($month)))
-                       ->whereYear('created_at', '=', date('Y', strtotime($month)))
+    $balances = Balance::whereMonth('date', '=', date('m', strtotime($month)))
+                       ->whereYear('date', '=', date('Y', strtotime($month)))
                        ->get();
 
     // Calculate totals
@@ -110,6 +134,6 @@ public function generateReport(Request $request)
         'total_credit' => $balances->sum('total_credit'),
     ];
 
-    return view('dash.balances.report', compact('balances', 'totals', 'month'));
+    return view('dash.balances.report', compact('balances', 'totals', 'month','is_report_balance'));
 }
 }

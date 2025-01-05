@@ -19,6 +19,7 @@ class Balance extends Model
         'jonal_credit',
         'total_debit',
         'total_credit',
+        'date',
     ];
 
     // Calculate total values dynamically

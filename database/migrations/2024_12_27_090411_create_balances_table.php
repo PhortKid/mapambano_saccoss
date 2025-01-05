@@ -22,6 +22,7 @@ return new class extends Migration
             $table->decimal('jonal_credit', 15, 2)->default(0); //  jonal
             $table->decimal('total_debit', 15, 2)->default(0); // Jumla ya Debit
             $table->decimal('total_credit', 15, 2)->default(0); // Jumla ya Credit
+            $table->string('date');
             $table->timestamps();
         });
     }
