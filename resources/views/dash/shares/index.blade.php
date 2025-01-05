@@ -94,7 +94,7 @@
     
                 @foreach ($users as $user)
                   
-                <option value="{{$user->id}}">{{$user->firtname}} {{$user->lastname}}</option>
+                <option value="{{$user->id}}">{{$user->firstname}} {{$user->middlename}} {{$user->lastname}}</option>
                
                  @endforeach
                  @endif
