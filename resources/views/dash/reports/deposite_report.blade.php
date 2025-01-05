@@ -22,6 +22,7 @@
         <br>
  <div class="container printable-area">
     <h1 class="my-4">Deposit/Akiba Report</h1>
+    <div class="table-responsive">
     <table class="table table-bordered" id="example">
         <thead class="">
             <tr>
@@ -70,7 +71,7 @@
         </tbody>
       
     </table>
-
+</div>
     <!-- Kitufe cha Chapisha Ripoti -->
     <button class="btn btn-success mt-3" onclick="window.print()">Chapisha Ripoti</button>
 </div>

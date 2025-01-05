@@ -71,6 +71,7 @@
         </tbody>
      
     </table>
+</div>
 
     <!-- Kitufe cha Chapisha Ripoti -->
     <button class="btn btn-success mt-3" onclick="window.print()">Chapisha Ripoti</button>

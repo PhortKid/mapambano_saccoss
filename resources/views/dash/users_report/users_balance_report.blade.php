@@ -23,7 +23,7 @@
 
         <div class="printable-area">
         <h1 class="my-4">All Applicant Report </h1> 
-
+        <div class="table-responsive">
     <table class="table table-bordered " id="example">
         <thead class="">
             <tr>
@@ -90,7 +90,7 @@
        
     </table>
 </div>
-
+</div>
     <!-- Kitufe cha Chapisha Ripoti -->
     <button class="btn btn-success mt-3" onclick="window.print()">Chapisha Ripoti</button>
 </div>

@@ -23,6 +23,8 @@
         <br>
         <div class="printable-area">
         <h1 class="my-4">All Applicant Report </h1> <h4>Date:{{$startDate}} Up to {{$endDate}}</h4>
+
+        <div class="table-responsive">
         <table class="table table-bordered " id="example">
         <thead class="">
             <tr>
@@ -95,6 +97,7 @@
 
         */ ?>
     </table>
+</div>
         </div>
    
     

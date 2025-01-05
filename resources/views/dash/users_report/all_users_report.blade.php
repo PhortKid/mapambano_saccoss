@@ -6,6 +6,7 @@
     <h1 class="my-4">All Applicant report</h1>
     <?php $i=1;  ?>
     <!-- Orodha ya Watumiaji na Mikopo -->
+    <div class="table-responsive">
     <table class="table table-striped table-bordered" id="example">
         <thead class="table-dark">
             <tr>
@@ -58,7 +59,7 @@
             </tr>
         </tfoot>
     </table>
-
+</div>
     <!-- Kitufe cha Chapisha Ripoti -->
     <button class="btn btn-success mt-3" onclick="window.print()">Print report</button>
 </div>
