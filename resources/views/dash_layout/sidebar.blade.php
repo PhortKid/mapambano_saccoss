@@ -30,6 +30,26 @@
     Activity
 </div>
 
+
+
+
+<!-- Report -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo30"
+        aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Loan Application</span>
+    </a>
+    <div id="collapseTwo30" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+   
+            <a class="collapse-item" href="{{route('loan_application.index')}}">Apply</a>
+           <!-- <a class="collapse-item" href="#">View</a> -->
+           
+            
+        </div>
+    </div>
+</li>
 <!-- Nav Item - Pages Collapse Menu -->
 @if(Auth::user()->role !="Applicant")
 <!-- Users -->
@@ -169,7 +189,7 @@
         </div>
     </div>
 </li>
-@if(Auth::user()->role !="Applicant")
+
 
 <!-- Urari -->
 <li class="nav-item">
@@ -181,15 +201,17 @@
     <div id="collapseTwo21" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Urari:</h6>
+            @if(Auth::user()->role !="Applicant")
             <a class="collapse-item" href="{{route('balances.index')}}">Urari</a>
+           
             <a class="collapse-item" href="{{route('balances.report')}}">Report</a>
- 
+            @endif
            
             
         </div>
     </div>
 </li>
-@endif
+
 
 <!-- Report -->
 <li class="nav-item">

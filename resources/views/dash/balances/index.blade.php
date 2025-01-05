@@ -3,9 +3,10 @@
 @extends('dash_layout.index')
 
 @section('content')
+@if(Auth::user()->role !="Applicant")
 <div class="container">
-    <h1>Balances</h1>
-    <a href="{{ route('balances.create') }}" class="btn btn-primary">Add Balance</a>
+    <h1>Urari</h1>
+    <a href="{{ route('balances.create') }}" class="btn btn-primary">Add Urari</a>
 
     <form action="{{ route('balances.index') }}" method="GET" class="mb-3">
     <div class="row">
@@ -91,4 +92,5 @@
         </tbody>
     </table>
 </div>
+@endif
 @endsection

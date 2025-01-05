@@ -13,7 +13,7 @@ use App\Http\Controllers\RepaidController;
 use App\Http\Controllers\UsersReportController;
 use App\Http\Controllers\UserBalanceReportController;
 use App\Http\Controllers\ReportsController;
-
+use App\Http\Controllers\LoanApplication;
 use App\Http\Controllers\BalanceController;//leo
 
 
@@ -350,3 +350,6 @@ Route::post('/balances_report', [BalanceController::class, 'generateReport'])->n
 
 
 Route::get('/demoo/{userid}',[InterestController::class,'showUserReport']);
+
+Route::resource('/loan_application',LoanApplication::class);
+Route::get('/application_list',[LoanApplication::class,'list']);

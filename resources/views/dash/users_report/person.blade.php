@@ -17,6 +17,7 @@
             </div>
             <div class="card-body">
                 <h5>Transaction:</h5>
+                <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead class="table-light">
                         <tr>
@@ -53,6 +54,7 @@
                         </tr>
                     </tfoot>
                 </table>
+              </div>
             </div>
         </div>
     @endforeach

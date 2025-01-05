@@ -5,7 +5,7 @@
 
 <div class="container">
     <h1 class="my-4">List Of Applicant</h1>
-    
+    <div class="table-responsive">
     <table class="table table-striped table-bordered" >
         <thead class="table-dark">
             <tr>
@@ -28,5 +28,6 @@
             @endforeach
         </tbody>
     </table>
+</div>
 </div>
 @endsection

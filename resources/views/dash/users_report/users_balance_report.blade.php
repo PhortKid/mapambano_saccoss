@@ -21,8 +21,11 @@
         </form>
         <br>
 
-    <table class="table table-bordered printable-area" id="example">
-        <thead class="table-dark">
+        <div class="printable-area">
+        <h1 class="my-4">All Applicant Report </h1> 
+
+    <table class="table table-bordered " id="example">
+        <thead class="">
             <tr>
                 <th>#</th>
                 <th>Jina la Mtumiaji</th>
@@ -86,6 +89,7 @@
         </tbody>
        
     </table>
+</div>
 
     <!-- Kitufe cha Chapisha Ripoti -->
     <button class="btn btn-success mt-3" onclick="window.print()">Chapisha Ripoti</button>

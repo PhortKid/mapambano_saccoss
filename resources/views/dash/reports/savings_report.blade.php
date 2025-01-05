@@ -1,8 +1,7 @@
 @extends('dash_layout.index')
 
 @section('content')
-<div class="container printable-area">
-    <h1 class="my-4">Saving Report</h1>
+
 
     <form action="{{ route('report.date.savings') }}" method="GET">
             @csrf
@@ -21,8 +20,10 @@
             </div>
         </form>
         <br>
+        <div class="container printable-area">
+    <h1 class="my-4">Saving Report</h1>
     <table class="table table-bordered" id="example">
-        <thead class="table-dark">
+        <thead class="">
             <tr>
                 <th>#</th>
                 <th>Fullname</th>
