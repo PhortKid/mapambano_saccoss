@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Deposite;
 use Illuminate\Http\Request;
 use  App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class DepositeController extends Controller
 {
@@ -12,8 +13,13 @@ class DepositeController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->role!='Applicant'){
         $users = User::all();
         $deposites = Deposite::with('user')->get();
+    }else{
+        $users = User::where('id',Auth::user()->id)->get();
+        $deposites = Deposite::with('user')->get();
+    }
         
         return view('dash.deposites.index')->with('deposites',$deposites)->with('users',$users);
     }

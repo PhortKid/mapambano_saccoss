@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Loans;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersReportController extends Controller
 {
@@ -12,8 +13,14 @@ class UsersReportController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('dash.users_report.index', compact('users'));
+
+        if(Auth::user()->role!='Applicant'){
+            $users = User::all();
+        }else{
+            $users = User::where('id',Auth::user()->id)->get();
+        }
+       
+       return view('dash.users_report.index', compact('users'));
     }
 
     /**

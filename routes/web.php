@@ -111,7 +111,12 @@ Route::middleware('auth')->group(function () {
     
     
 Route::get('/all_applicant_share', function() {
-    $users = User::where('role', 'applicant')->get(); 
+    if(Auth::user()->role !='Applicant'){
+        $users = User::where('role', 'applicant')->get(); 
+    }else{
+        $users = User::where('id', Auth::user()->id)->get(); 
+    }
+    
   
     return view('dash.shares.applicant')->with('users', $users);
 })->name('all.applicant.shares');
@@ -150,7 +155,12 @@ Route::get('/all_applicant_share_report/{user_id}', function($user_id) {
 
 Route::get('/all_applicant_saving', function() {
    // $users = User::where('role', 'admin')->get(); 
-   $users=User::all();
+   if(Auth::user()->role !='Applicant'){
+    $users=User::all();
+   }else{
+    $users=User::where('id',Auth::user()->id)->get();
+   }
+ 
     return view('dash.savings.applicant')->with('users', $users);
 })->name('all.applicant.saving');
 
@@ -175,8 +185,11 @@ Route::get('/all_applicant_saving_report/{user_id}', function($user_id) {
 //DEPOSITE CONTROLLER
 
 Route::get('/all_applicant_deposite', function() {
+    if(Auth::user()->role !='Applicant'){
     $users = User::where('role', 'applicant')->get(); 
-  
+    }else{
+        $users = User::where('id', Auth::user()->id)->get(); 
+    }
     return view('dash.deposites.applicant')->with('users', $users);
 })->name('all.applicant.deposite');
 
@@ -223,7 +236,13 @@ Route::get('/all_applicant_loan_report/{user_id}', function($user_id) {
 //INTEREST CONTROLLER
 
 Route::get('/all_applicant_interest', function() {
-    $users=User::all();
+
+    if(Auth::user()->role !='Applicant'){
+        $users=User::all();
+    }else{
+        $users=User::where('id',Auth::user()->id)->get();
+    }
+    
      return view('dash.interest.applicant')->with('users', $users);
  })->name('all.applicant.interest');
  /*
@@ -327,3 +346,7 @@ Route::resource('/balances',BalanceController::class);
 Route::get('/balances_report', [BalanceController::class, 'report'])->name('balances.report');
 Route::post('/balances_report', [BalanceController::class, 'generateReport'])->name('balances.generateReport');
 });
+
+
+
+Route::get('/demoo/{userid}',[InterestController::class,'showUserReport']);

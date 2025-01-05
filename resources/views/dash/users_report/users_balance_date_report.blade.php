@@ -31,7 +31,8 @@
                 <th>Share (Salio)</th>
                 <th>Saving (Salio)</th>
                 <th>Loan (Salio)</th>
-                <th>Jumla ya Salio</th>
+                <th>Interest/Riba (Salio)</th>
+                <!--<th>Jumla ya Salio</th>-->
             </tr>
         </thead>
         <tbody>
@@ -40,6 +41,7 @@
                 $totalShareBalance = 0;
                 $totalSavingBalance = 0;
                 $totalLoanBalance = 0;
+                $totalInterestBalance = 0;
                 $grandTotalBalance = 0;
             @endphp
 
@@ -49,13 +51,15 @@
                     $userShareBalance = $user->shares->sum('balance');
                     $userSavingBalance = $user->savings->sum('balance');
                     $userLoanBalance = $user->loans->sum('balance');
-                    $totalBalance = $userDepositBalance + $userShareBalance + $userSavingBalance + $userLoanBalance;
+                    $userInterestBalance = $user->interest->sum('balance');
+                    $totalBalance = $userDepositBalance + $userShareBalance + $userSavingBalance + $userLoanBalance +$userInterestBalance;
 
                     // Accumulate total balances for all users
                     $totalDepositBalance += $userDepositBalance;
                     $totalShareBalance += $userShareBalance;
                     $totalSavingBalance += $userSavingBalance;
                     $totalLoanBalance += $userLoanBalance;
+                    $totalInterestBalance +=$userInterestBalance;
                     $grandTotalBalance += $totalBalance;
                 @endphp
 
@@ -66,7 +70,8 @@
                     <td>{{ number_format($userShareBalance, 2) }}</td>
                     <td>{{ number_format($userSavingBalance, 2) }}</td>
                     <td>{{ number_format($userLoanBalance, 2) }}</td>
-                    <td>{{ number_format($totalBalance, 2) }}</td>
+                    <td>{{ number_format($userInterestBalance, 2) }}</td>
+                   <!-- <td>{{ number_format($totalBalance, 2) }}</td>  -->
                 </tr>
 
           
@@ -78,7 +83,8 @@
                 <td><strong>{{ number_format($totalShareBalance, 2) }}</strong></td>
                 <td><strong>{{ number_format($totalSavingBalance, 2) }}</strong></td>
                 <td><strong>{{ number_format($totalLoanBalance, 2) }}</strong></td>
-                <td><strong>{{ number_format($grandTotalBalance, 2) }}</strong></td>
+                <td><strong>{{ number_format($totalInterestBalance, 2) }}</strong></td>
+               <!-- <td><strong>{{ number_format($grandTotalBalance, 2) }}</strong></td>-->
             </tr>
         </tbody>
         <?php  /*

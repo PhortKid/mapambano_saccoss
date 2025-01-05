@@ -85,4 +85,11 @@ class InterestController extends Controller
         $interests->delete();
         return redirect('/interest_management')->with('success','Interest Deleted');
     }
+
+    public function showUserReport($userId)
+    {
+        $user = User::with('interest')->findOrFail($userId);
+      // return $user;
+        return view('dash.interest.individual_report', compact('user'));
+    }
 }

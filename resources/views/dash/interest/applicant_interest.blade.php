@@ -24,8 +24,10 @@
 <th>paid</th>
 <th>Balance</th>
 <th>Date</th>
+@if(Auth::user()->role !='Applicant')
 <th>Edit</th>
 <th>Delete</th>
+@endif
 
 </tr>
 </thead>
@@ -44,12 +46,14 @@
     <td>{{number_format($interest->paid,2)}}</td>
     <td>{{number_format($interest->balance,2)}}</td>
     <td>{{$interest->date}}</td>
+    @if(Auth::user()->role !='Applicant')
     <!--<td><a href='#' data-bs-toggle='modal' data-id=''  data-bs-target='#pop' class='showdata' value='' name='data'><i class='fa fa-edit'></i></a></td>-->
     <td><a href="#"  data-bs-toggle="modal" data-bs-target="#EditInterest{{$interest->id}}"><i class='fa fa-edit text-primary'></i></a></td>
     <td><a href='#'  data-bs-toggle="modal" data-bs-target="#DeleteInterest{{$interest->id}}"><i class='fa fa-trash text-danger'></i></a></td>
-    
+   
     @include('dash.interest.edit')
     @include('dash.interest.delete')
+    @endif
     </tr> 
    @endforeach
 @else 

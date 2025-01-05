@@ -49,6 +49,7 @@
         </div>
     </div>
 </li>
+@endif
 
 
 <li class="nav-item">
@@ -59,8 +60,10 @@
     </a>
     <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
+        @if(Auth::user()->role !="Applicant")
             <h6 class="collapse-header">manage:</h6>
             <a class="collapse-item" href="{{ route('shares_management.index')}}">View/Manage Shares</a>
+            @endif
             <a class="collapse-item" href="{{route('all.applicant.shares')}}">View applicant shares</a>
         </div>
     </div>
@@ -75,8 +78,10 @@
     </a>
     <div id="collapseTwo3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
+        @if(Auth::user()->role !="Applicant")
             <h6 class="collapse-header">manage:</h6>
             <a class="collapse-item" href="{{ route('savings_management.index')}}">View/Manage Savings</a>
+            @endif
             <a class="collapse-item" href="{{route('all.applicant.saving')}}">View applicant savings</a>
         </div>
     </div>
@@ -93,11 +98,15 @@
     <div id="collapseTwo4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">manage:</h6>
+            @if(Auth::user()->role !="Applicant")
             <a class="collapse-item" href="{{ route('deposites_management.index')}}">View/Manage Deposit</a>
+            @endif
             <a class="collapse-item" href="{{route('all.applicant.deposite')}}">View applicant deposit</a>
         </div>
     </div>
 </li>
+
+
 
 <!-- mkopo -->
 <li class="nav-item">
@@ -109,16 +118,21 @@
     <div id="collapseTwo5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">manage:</h6>
+            @if(Auth::user()->role !="Applicant")
             <a class="collapse-item" href="{{ route('loans_management.index')}}">Manage Loan/Ratibu Mikopo</a>
             <a class="collapse-item" href="{{ route('repaid_management.index')}}">Pay Loan/Lipa Mkopo</a>
+            @endif
+
             <a class="collapse-item" href="{{ route('users.index')}}">Applicant Loan Detail</a>
+            @if(Auth::user()->role !="Applicant")
             <a class="collapse-item" href="{{route('all.users.report')}}">All Applicant Loan Report</a>
+            @endif
             
         </div>
     </div>
 </li>
 
-
+@if(Auth::user()->role !="Applicant")
 <!-- EXPENSE -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo11"
@@ -134,7 +148,7 @@
         </div>
     </div>
 </li>
-
+@endif
 <!-- Interest -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo20"
@@ -144,16 +158,18 @@
     </a>
     <div id="collapseTwo20" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
+        @if(Auth::user()->role !="Applicant")
             <h6 class="collapse-header">Manage:</h6>
             <a class="collapse-item" href="{{route('interest_management.index')}}">Manage Interest</a>
             <a class="collapse-item" href="{{route('repaid_interest_management.index')}}">Pay Interest</a>
+            @endif
             <a class="collapse-item" href="{{route('all.applicant.interest')}}">View Applicant Interest</a>
            
             
         </div>
     </div>
 </li>
-
+@if(Auth::user()->role !="Applicant")
 
 <!-- Urari -->
 <li class="nav-item">
@@ -173,8 +189,8 @@
         </div>
     </div>
 </li>
-
 @endif
+
 <!-- Report -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo10"

@@ -5,15 +5,19 @@ use  App\Models\User;
 use  App\Models\Savings;
 use DB;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class SavingsController extends Controller
 {
     
     public function index()
     {
-    
+        if(Auth::user()->role!='Applicant'){
         $users = User::all();
         $savings = Savings::with('user')->get();
+        }else{
+            $users = User::where('id',Auth::user()->id)->get();
+        $savings = Savings::with('user')->get();
+        }
         
         return view('dash.savings.index')->with('savings',$savings)->with('users',$users);
        

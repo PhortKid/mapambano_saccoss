@@ -5,7 +5,7 @@ use App\Models\Shares;
 use Illuminate\Http\Request;
 use  App\Models\User;
 use DB;
-
+use Illuminate\Support\Facades\Auth;
 class SharesController extends Controller
 {
     /**
@@ -13,9 +13,16 @@ class SharesController extends Controller
      */
     public function index()
     {
-    
+        if(Auth::user()->role!='Applicant'){
         $users = User::all();
         $shares = Shares::with('user')->get();
+
+        }else{
+            $users = User::where('id',Auth::user()->id)->get();
+           $shares = Shares::with('user')->get();
+           
+
+        }
         
         return view('dash.shares.index')->with('shares',$shares)->with('users',$users);
        
