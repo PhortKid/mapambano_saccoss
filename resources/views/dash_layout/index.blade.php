@@ -305,6 +305,29 @@
     }
 });
      </script>
+
+<script>
+        // Function to format the input as money
+        function formatMoney(value) {
+            return value
+                .replace(/\D/g, "") // Remove all non-numeric characters
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ","); // Add commas for thousands
+        }
+
+        document.getElementById("money").addEventListener("input", function (e) {
+            // Save the cursor position
+            const cursorPosition = this.selectionStart;
+
+            // Get and format the input value
+            const formattedValue = formatMoney(this.value);
+
+            // Update the input value
+            this.value = formattedValue;
+
+            // Restore the cursor position
+            this.setSelectionRange(cursorPosition, cursorPosition);
+        });
+    </script>
 </body>
 
 </html>

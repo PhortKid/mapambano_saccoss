@@ -42,7 +42,7 @@
    @foreach ($loan_applications as $loan_application)
    <tr>
     <td><?php echo $i++ ?></td>
-   <td>{{$loan_application->user->firstname}}  {{$loan_application->user->lastname}}</td> 
+   <td>{{$loan_application->firstname}}  {{$loan_application->lastname}}</td> 
     <td>{{number_format($loan_application->amount,2)}}</td>
     <td>{{number_format($loan_application->decription,2)}}</td>
     <td>{{$loan_application->created_at}}</td>

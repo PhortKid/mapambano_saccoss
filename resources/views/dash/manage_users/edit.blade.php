@@ -49,11 +49,12 @@
         <div class="form-group">
           <label for="role" class="col-form-label">Role</label>
           <select name="role" class="form-control">
-            <option selected="true">{{$user->role}}</option>
-            <option value="Admin">Admin</option>
-            <option value="secretary">Secretary</option>
-            <option value="chair_man">Chair man</option> 
-            <option value="Applicant">Applicant</option>
+          <option value="">-- Select role</option> 
+                    <option value="Admin">Applicant</option> 
+                     <option value="loan_officer">LOAN OFFICER</option> 
+                     <option value="vice_chairman">VICE CHAIRMAN</option> 
+                     <option value="chairman">CHAIRMAN</option>
+                     <option value="Admin">Admin</option> 
           </select>
         </div>
 

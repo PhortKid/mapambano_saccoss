@@ -13,7 +13,7 @@ use App\Http\Controllers\RepaidController;
 use App\Http\Controllers\UsersReportController;
 use App\Http\Controllers\UserBalanceReportController;
 use App\Http\Controllers\ReportsController;
-use App\Http\Controllers\LoanApplication;
+use App\Http\Controllers\LoanApplicationsController;
 use App\Http\Controllers\BalanceController;//leo
 
 
@@ -351,5 +351,8 @@ Route::post('/balances_report', [BalanceController::class, 'generateReport'])->n
 
 Route::get('/demoo/{userid}',[InterestController::class,'showUserReport']);
 
-Route::resource('/loan_application',LoanApplication::class);
-Route::get('/application_list',[LoanApplication::class,'list']);
+Route::resource('/loan_application',LoanApplicationsController::class);
+Route::post('/loan_approve',[LoanApplicationsController::class,'approve'])->name('loan_application.approve');
+
+//Route::get('/apply_loan',[LoanApplicationsController::class,'add']);
+//Route::get('/application_list',[LoanApplications::class,'list'])->name('loan_application.list');

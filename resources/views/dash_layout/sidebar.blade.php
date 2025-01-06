@@ -44,7 +44,8 @@
         <div class="bg-white py-2 collapse-inner rounded">
    
             <a class="collapse-item" href="{{route('loan_application.index')}}">Apply</a>
-           <!-- <a class="collapse-item" href="#">View</a> -->
+            <a class="collapse-item" href="#">Approve Loan</a> 
+            <a class="collapse-item" href="#">Loan status</a> 
            
             
         </div>

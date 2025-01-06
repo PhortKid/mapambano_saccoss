@@ -77,7 +77,12 @@ class User extends Authenticatable
     
     public function loanApplications()
     {
-        return $this->hasMany(LoanApplication::class);
+        return $this->hasMany(LoanApplication::class, 'client_id');
     }
- 
+    
+    public function approvedLoanApplications()
+    {
+        return $this->hasMany(LoanApplication::class, 'approved_by');
+    }
+    
 }

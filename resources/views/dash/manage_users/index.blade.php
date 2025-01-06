@@ -131,10 +131,12 @@
            
                  <div class="col-sm-10">
                  <select class="form-select form-control" aria-label="Default select example" name="role">
-                     <option value="Admin">Admin</option>
-                     <option value="secretary">Secretary</option>
-                     <option value="chair_man">Chair man</option> 
-                     <option value="Applicant">Applicant</option>
+                 <option value="">-- Select role</option> 
+                    <option value="Admin">Applicant</option> 
+                     <option value="loan_officer">LOAN OFFICER</option> 
+                     <option value="vice_chairman">VICE CHAIRMAN</option> 
+                     <option value="chairman">CHAIRMAN</option>
+                     <option value="Admin">Admin</option> 
                  </select>
                  </div>
                 </div>
